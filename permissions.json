@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "foodcart-302716",
+  "private_key_id": "52010bab888669a8ebcaefd6a5b3aa300b673bd2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDCY+Ms18+qGEhP\nPgLwaHR2/V4JyfQ9x9HqZLNfkc50tDTBielmB8/ZyHdBYLcHHV0pLi0NIiIUGk/n\nxhvnLrqhBursMrqAO/jte1SKxfZLfOXMnnRIFBayro5olLrsh99EHF0j7banMZ9h\nr0qo5z+Xh+nGMTc0q6v+klUF3yyMxeu8PuQ0JISLJA4L8CMqF08GSIXMBJgTfr/q\nJvSH9nZrT4+JwuhHh0EwCgR8ofVJ/5SUKyySYepd1TSZCYb9R3E8E26AoHOjNc6T\nMF33Z/hfSoLlk0dMqs81pWvs9CePmDuj005HSRQMgIgqyjQjUt2eY684FvIuC+zt\nx02A1hGlAgMBAAECggEADuQxCIPl1C11CKEC/6C4306skAppC/yNP6wEM7uLOdR+\nQB9NAnRxv0jEnf0HOGPO+bMgX2OwgaK8YVCDXbPuNxy9DWgbcmxltueeQ91Db2f7\ngK/Yz5a+YGTP4wIVyb3k5CZaGkEBH5DFGWogyYyhif2u8nBdvsqx69gQ7Fi65HO4\n1I/wm3tdjcm09QF0h3YNj5xtbqB4v3GvAVSKLYDFYp5MF912G4zmP3bHXQUPQ3VF\n+lZ0cU1f7kcLOFVcF5KBR29HTSD0ACkyV5BMhMil2cFqL8BBWeXpI+D+xu8WMj1P\n2q/QMTCPeu/9Fi1qhESKkF6Q4ByY2FDEbCmlUqQBhwKBgQDoju4BRCjCHZnHkKmv\nRBWv/WToRhvh+RKl94QablgchKBv160QCJo1r/Rk2o0yni4gilsDE7hjcdQ/4Ysv\npTytf18QOjo9vJ+jymdLkxIK+QtBsRB367TjmBcETmYEa/R0nlm/BsMmi0KIcdzi\na+AD2KbapbVS7ANhjzm2mIsJwwKBgQDV/AuBMRmp8cWXPYeXhRgH1pZPlKZ7Ak6b\nDl93jtLnLVkkbfVqdjMkapcmO+Yw9rJNE1oUCjvVaigXcqbU8CSf5MFITXlZ3ngO\njCzu8vLlZhShFcq6QrwyWcHFKnSvp1LMjdDpyUsgZNeBgubo8kODoLYp3t6ASRB8\novQ1oKjYdwKBgEZTAnHrlI+ut9P7UPSpGA3SCHOcz82zrgn2IUKE36wwBvwLMlBI\n6akWfkcJN+14m+ZHMGJr0jRwNYjjwV01EHY+sBaOJRKKOZQkHrxhyvD6gobo7lv1\nMQwp77vjoUHxC0lAoU780oKTVhlApVTq3iELoNk5hu1+ZT9ZOlCXLGRVAoGBAKel\ndRn9bt7fRW/NS/rg0kfpzg+BJcE/uHfwlcjkg8WMmMdawqhq/HxuagcRbLI1xNFv\n9OW4ctIr/kcIkz5G+lqu7OMJl6ZaDnNPTTDT9IrXJBhkK1UsTaeg/JfNQGgRzmPm\nQ6O2Cf7SIqkb9m7QxyZL9gvtySJ2m80aGfwd58rXAoGAHizVJOv9JSJPkZO1amB1\niz1PL52UWqqMH7WSE4tr37WMS4SeQeSt2f49/iZVaAITVS4TH5+n/waIur53ubkv\n01D94FmfNnIh0h/hqdvwavQA4DDposYQF7V0vCCLR74G4KgrN8jM48ofBLhdBAXf\noLSRKek8vBQnNDFSVvxafGg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-dmpse@foodcart-302716.iam.gserviceaccount.com",
+  "client_id": "117529970943640638613",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-dmpse%40foodcart-302716.iam.gserviceaccount.com"
+}

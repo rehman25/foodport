@@ -1,0 +1,52 @@
+{
+  "name": "foodport",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "npm run build && next export -o _static"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@firebase/util": "^1.5.2",
+    "@material-ui/core": "^4.12.3",
+    "@mui/icons-material": "^5.5.1",
+    "@react-google-maps/api": "^2.8.1",
+    "@reduxjs/toolkit": "^1.8.0",
+    "@stripe/react-stripe-js": "^1.7.0",
+    "@stripe/stripe-js": "^1.26.0",
+    "antd": "^4.18.4",
+    "axios": "^0.26.1",
+    "chart.js": "^3.7.1",
+    "dva-utils": "^2.0.0",
+    "firebase": "^9.6.8",
+    "firebase-admin": "^10.1.0",
+    "google-map-react": "^2.1.10",
+    "google-maps-react": "^2.0.6",
+    "isemail": "^3.2.0",
+    "micro": "^9.3.4",
+    "next": "12.0.8",
+    "next-auth": "^4.3.1",
+    "react": "17.0.2",
+    "react-async-script-loader": "^0.3.0",
+    "react-chartjs-2": "^4.0.1",
+    "react-dom": "17.0.2",
+    "react-places-autocomplete": "^7.3.0",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "reactstrap": "^9.0.1",
+    "redux": "^4.1.2",
+    "serverless-mysql": "^1.5.4",
+    "stripe": "^8.215.0"
+  },
+  "devDependencies": {
+    "@types/google-map-react": "^2.1.5",
+    "@types/react": "^17.0.38",
+    "@types/react-places-autocomplete": "^7.2.9",
+    "eslint": "8.7.0",
+    "eslint-config-next": "12.0.8",
+    "typescript": "^4.5.4"
+  }
+}
