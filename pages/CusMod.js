@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+
 import React from 'react'
 import Router from 'next/router';
 import { useRouter } from 'next/router';

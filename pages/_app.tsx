@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 import '../styles/globals.css'
 import '../styles/basket.css'
 import '../styles/Footer.css'

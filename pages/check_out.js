@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable react/jsx-key */
+
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import Footer from './Footer';

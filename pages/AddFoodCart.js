@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-sync-scripts */
 import React,{useState} from 'react'
 import Head from 'next/head'
 import { useSelector } from 'react-redux';
@@ -153,7 +152,7 @@ onSelect={handleSelect}>
                   ? { backgroundColor: '#fafafa', cursor: 'pointer', }
                   : { backgroundColor: '#ffffff', cursor: 'pointer' };
                 return (
-                  // eslint-disable-next-line react/jsx-key
+      
                   <div
                     {...getSuggestionItemProps(suggestion, {
                       className,
