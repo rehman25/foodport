@@ -4,7 +4,7 @@ import ResturentSidebar from './ResturentSidebar'
 import DCss from '../styles/dashboard.module.css'
 import Image from 'next/image'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout, selectUser } from './features/UserSlice'
+import { logout, selectUser } from '.././components/features/UserSlice'
 import Link from 'next/link'
 import {auth} from "../firebase"
 import {signOut} from "firebase/auth"
