@@ -1,9 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { Tabs } from 'antd';
-import tab_style from '../styles/tabs.module.css'
-import Image from 'next/image'
-import Link from 'next/link'
-import data from "./data.json"
+
 import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore'
 import { db } from '../firebase'
