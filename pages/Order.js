@@ -10,7 +10,10 @@ function Order({obj,data}) {
     console.log(data); 
     const router = useRouter();
     const  dispatch = useDispatch();
-   
+   const data=function () {
+
+       router.push('/foodItem', obj);
+   }
     const openResturant=()=>{
         let data = obj
          dispatch(selectResturant(payload));
