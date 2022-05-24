@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux';
 import { auth } from '../firebase'
-import { login } from './features/UserSlice'
+import { login, logout,} from '.././components/features/UserSlice';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 export default function Sign_Up() {
     const [email, setEmail] = useState("")

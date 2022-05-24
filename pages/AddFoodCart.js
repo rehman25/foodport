@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Head from 'next/head'
 import { useSelector } from 'react-redux';
-import { selectUser } from './features/UserSlice';
+import { selectUser } from '.././components/features/UserSlice';
 import { addDoc, collection, serverTimestamp, updateDoc,doc } from 'firebase/firestore';
 import { db,storage } from '../firebase';
 import { route } from 'next/dist/server/router';

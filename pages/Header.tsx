@@ -2,9 +2,9 @@ import React from 'react';
 import navstyle from '../styles/Navber.module.css'
 import Link from 'next/link'
 import { useSelector,useDispatch } from 'react-redux';
-import { selectItems } from './features/BasketSlice';
-import { selectUser } from './features/UserSlice';
-import { logout } from './features/UserSlice';
+import { selectItems } from '.././components/features/BasketSlice';
+import { selectUser } from '.././components/features/UserSlice';
+import { logout } from '.././components/features/UserSlice';
 import { auth } from '../firebase';
 import { useRouter } from 'next/router'
 function Header() {

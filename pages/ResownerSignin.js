@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { login, logout,} from './features/UserSlice';
+import { login, logout,} from '.././components/features/UserSlice';
 import { onAuthStateChanged, signInWithEmailAndPassword,getAuth } from 'firebase/auth';
 
 import { route } from 'next/dist/server/router';

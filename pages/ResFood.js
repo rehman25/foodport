@@ -1,8 +1,7 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable react-hooks/rules-of-hooks */
+
 import React,{useState} from 'react'
 import { useDispatch } from 'react-redux';
-import { addToBasket } from './features/BasketSlice';
+import { addToBasket } from '.././components/features/BasketSlice';
 import resstyle from '../styles/resbox.module.css';
 import Image from 'next/image';
 

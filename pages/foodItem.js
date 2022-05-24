@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectOpenResturant } from '../pages/features/ResSlice';
+import { selectOpenResturant } from '.././components/features/ResSlice';
 import { db } from '../firebase'
 import { useLocation } from 'react-router';
 import { collection, onSnapshot, orderBy, query,where } from 'firebase/firestore'

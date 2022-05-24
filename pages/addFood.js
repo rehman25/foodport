@@ -7,7 +7,7 @@ import Head from 'next/head'
 import { useLocation, useParams } from 'react-router';
 // import Link from 'next/link'
 import { useSelector } from 'react-redux';
-import { selectUser } from './features/UserSlice'
+import { selectUser } from '.././components/features/UserSlice'
 import { addDoc, collection, serverTimestamp, updateDoc,doc } from 'firebase/firestore';
 import { db,storage } from '../firebase';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';

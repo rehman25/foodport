@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/AddResturent.js", "pages/AddFoodCart.js", "pages/ResturentItems.js", "pages/FoodItems.js", "pages/ResownerSignin.js", "pages/index.js", "pages/tabs.js", "pages/resbox.js", "pages/basket_item.js", "pages/check_out.js", "pages/userorders.js", "pages/ressearch.js"  ],
+, "pages/AddResturent.js", "pages/AddFoodCart.js", "pages/ResturentItems.js", "pages/FoodItems.js", "pages/ResownerSignin.js", "pages/index.js", "pages/tabs.js", "pages/resbox.js", "pages/basket_item.js", "pages/check_out.js", "pages/userorders.js", "pages/ressearch.js", "components/app/store.js"  ],
   "exclude": [
     "node_modules"
   ]

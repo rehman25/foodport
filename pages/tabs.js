@@ -8,8 +8,8 @@ import React,{useState,useEffect} from 'react';
 import { collection, onSnapshot, orderBy, query,where } from 'firebase/firestore'
 import { db } from '../firebase'
 import {TabsCard} from './TabsCard'
-import {LocalChainTabs} from './LocalChainTabs'
-import {BigChainTabs} from './BigChainTabs'
+import {LocalChainTabs} from '.././components/LocalChainTabs'
+import {BigChainTabs} from '.././components/BigChainTabs'
 
 const { TabPane } = Tabs;
 

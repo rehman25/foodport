@@ -12,7 +12,7 @@ import Link from 'next/link'
 import TabsCard from './tabs'
 import data from './data.json'
 import { useDispatch } from 'react-redux';
-import { login, logout } from './features/UserSlice';
+import { login, logout } from '.././components/features/UserSlice';
 import {
   geocodeByAddress,
   geocodeByPlaceId,

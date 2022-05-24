@@ -7,7 +7,7 @@ import Header from './Header';
 import React,{useState, useEffect} from 'react'
 import resstyle from '../styles/resbox.module.css';
 import { useSelector } from 'react-redux';
-import { selectOpenResturant } from './features/ResSlice';
+import { selectOpenResturant } from '.././components/features/ResSlice';
 import SimpleMap from './simpleMap';
 import { GoogleApiWrapper, Map } from 'google-maps-react';
 import data from './data.json';

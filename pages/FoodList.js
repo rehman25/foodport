@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React,{useState} from 'react'
 import { useDispatch } from 'react-redux';
-import { addToBasket } from './features/BasketSlice';
+import { addToBasket } from '.././components/features/BasketSlice';
 import Food from '../styles/FoodItems.module.css'  
 import Image from 'next/image';
 import Head from 'next/head'

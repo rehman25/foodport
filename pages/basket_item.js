@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Header from './Header';
 import Footer from './Footer';
 import CheckoutPro from './CheckoutPro'
-import { selectItems, selectTotal } from './features/BasketSlice'
+import { selectItems, selectTotal } from '.././components/features/BasketSlice';
 
 
 import { useSelector } from 'react-redux'

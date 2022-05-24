@@ -4,7 +4,7 @@ import ResCss from '../styles/res-sidebar.module.css'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase'
 import { useDispatch } from 'react-redux'
-import { logout } from './features/UserSlice'
+import { logout } from '.././components/features/UserSlice'
 import { useRouter } from 'next/router'
 function ResturentSidebar() {
     const  dispatch = useDispatch();

@@ -12,9 +12,9 @@ import '../styles/Add_Resturent.css'
 
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
-import store from './app/store';
+import store from '../components/app/store';
 import { useDispatch } from 'react-redux';
-import { login, logout } from './features/UserSlice';
+import { login, logout } from '../components/features/UserSlice';
 
 function MyApp({ Component, pageProps }) {
 
