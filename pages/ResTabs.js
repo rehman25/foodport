@@ -8,8 +8,8 @@ import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore'
 import { db } from '../firebase'
 import { ResMod } from './ResMod'
-import { ResLocalResturents } from './ResLocalResturents'
-import { ResBigChainResturent } from './ResBigChaiResturent'
+import { ResLocalResturents } from '../components/ResLocalResturents'
+import { ResBigChainResturent } from '../components/ResBigChaiResturent'
 
 
 

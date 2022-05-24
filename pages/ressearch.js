@@ -27,7 +27,7 @@ import {
     getLatLng,
 } from 'react-places-autocomplete';
 
-import { ResLocalResturents } from './ResLocalResturents';
+import { ResLocalResturents } from '../components/ResLocalResturents';
 const YELP_API_KEY ="qklm8gNViuFHR2AE7PikCdRdgCarxI_3ijNPua11_1M8iXNO-WZLvhZED5U5EEWcrs4ZK8GMmqV0Hg6_JvMS5gRsZSt50Ch9JbbSpn9bdHCJLS4EJ6GN-wGB9oN-YnYx";   
     const YELP_CLIENT_KEY='fOjhYTVODCzwp01xmsuBJw';
 

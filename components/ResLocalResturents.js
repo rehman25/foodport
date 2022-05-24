@@ -2,11 +2,9 @@ import Router from 'next/router';
 import React from 'react'
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import DCss from '../styles/dashboard.module.css'
-import { selectResturant } from '.././components/features/ResSlice';
-import tab_style from '../styles/tabs.module.css'
-import Link from 'next/link'
-export const ResBigChainResturent = ({obj}) => {
+import { selectResturant } from './features/ResSlice';
+
+export const ResLocalResturents = ({obj}) => {
     console.log(obj); 
     const router = useRouter();
     const  dispatch = useDispatch();

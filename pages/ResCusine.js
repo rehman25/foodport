@@ -4,8 +4,8 @@ import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestor
 import { db } from '../firebase'
 import { ResMod } from './ResMod'
 import CusMod from './CusMod'
-import { ResLocalResturents } from './ResLocalResturents'
-import { ResBigChainResturent } from './ResBigChaiResturent'
+import { ResLocalResturents } from '../components/ResLocalResturents'
+import { ResBigChainResturent } from '../components/ResBigChaiResturent'
 
 
 
