@@ -6,7 +6,7 @@ import DCss from '../styles/dashboard.module.css'
 import { selectResturant } from './features/ResSlice';
 import tab_style from '../styles/tabs.module.css'
 import Link from 'next/link'
-const BigChainTabs = ({obj}) => {
+export const BigChainTabs = ({obj}) => {
     console.log(obj); 
     const router = useRouter();
     const  dispatch = useDispatch();
@@ -52,4 +52,3 @@ const BigChainTabs = ({obj}) => {
 
 )
 }
-export default BigChainTabs;

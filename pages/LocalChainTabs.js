@@ -6,7 +6,7 @@ import DCss from '../styles/dashboard.module.css'
 import { selectResturant } from './features/ResSlice';
 import tab_style from '../styles/tabs.module.css'
 import Link from 'next/link'
- const LocalChainTabs = ({obj}) => {
+export const LocalChainTabs = ({obj}) => {
     console.log(obj); 
     const router = useRouter();
     const  dispatch = useDispatch();
@@ -39,4 +39,3 @@ import Link from 'next/link'
 
 )
 }
-export default LocalChainTabs;
