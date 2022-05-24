@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect, Component } from 'react';
-import { useSelector } from 'react-redux';
-import { selectOpenResturant } from './features/ResSlice';
+
 import {Map,  Marker, GoogleApiWrapper} from 'google-maps-react';
-import SimpleMap from './simpleMap';
+
 const containerStyle = {
   position: "relative",
   width: "100%",

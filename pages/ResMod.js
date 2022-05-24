@@ -3,7 +3,7 @@ import React from 'react'
 import Router from 'next/router';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import { selectResturant } from './features/ResSlice';
+import { selectResturant } from '.././components/features/ResSlice';
 
 const ResMod = ({ obj }) => {
     console.log(obj);
