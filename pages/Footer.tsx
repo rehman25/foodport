@@ -32,7 +32,7 @@ function Footer(props) {
             </ul>
             </div>
             <div className="ft-main-item social">
-             <img src="/img/logologo.f87723ea.png" height={60} alt="" />
+             <img src="/img/food_port_logo_WHITE-01.png" height={60} alt="" />
              <br />
                 <li><a><i className="fab fa-twitter"></i></a></li>
                 <li><a><i className="fab fa-facebook"></i></a></li>
@@ -43,7 +43,7 @@ function Footer(props) {
 
         <section className="ft-social">
             <ul className="ft-social-list">
-            <li><a>Copyright 2022.All rights reserved.</a></li>
+            <li><a>Copyrights@ 2022.All rights reserved.</a></li>
             <li><a><i className="fab fa-twitter"></i></a></li>
             <li><a><i className="fab fa-facebook"></i></a></li>
             <li><a><i className="fab fa-instagram"></i></a></li>
