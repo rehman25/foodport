@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux';
-import { login } from './features/UserSlice'
+import { login } from '.././components/features/UserSlice'
 import regis_style from '../styles/register.module.css'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
