@@ -27,6 +27,8 @@ const YelpTabs = (props) => {
               Authorization: `Bearer ${YELP_API_KEY}`,
               'Content-Type': 'application/json',
               'Accept': 'application/json',
+              'Access-Control-Allow-Origin' : '*'
+
              
     
             },

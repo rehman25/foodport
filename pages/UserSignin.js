@@ -22,11 +22,15 @@ function UserSignin() {
       auth.onAuthStateChanged(async (userAuth) => {
         if (userAuth) {
           dispatch(login({
-            email: userAuth.email,
-            uid: userAuth.uid,
-            displayName: userAuth.displayName,
+            email: userAuth.email,  
           }))
-
+          try {
+       
+            await localStorage.setItem('EMAIL', userAuth.email)
+           
+          } catch (e) {
+            console.log('é', e)
+          }
         } else {
           dispatch(logout)
         }
@@ -35,16 +39,19 @@ function UserSignin() {
     // const user = auth.currentUser;
     const logintoApp = (e) => {
       e.preventDefault()
+      let EMAIL = localStorage.getItem('EMAIL');
       signInWithEmailAndPassword(auth,email, password).then((userAuth) => {
         dispatch(login({
           email: userAuth.user.email,
-          uid: userAuth.user.uid,
+          // uid: userAuth.user.uid,
           // displayName: userAuth.user.displayName,  
         }))
       })
         if (auth.currentUser !== null) {
             router.push('./')
+            
         }
+      
     }
   return (
       <>

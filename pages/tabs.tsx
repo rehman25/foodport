@@ -11,7 +11,7 @@ const Tab = () => (
     
     <Tabs defaultActiveKey="Food Truck" centered>
         
-        <TabPane tab="Food Truck" key="Food Truck">
+        <TabPane tab="Food " key="Food ">
             <div className={tab_style.flex_row}>
             {data.foddcard.map((post,key) =>{
                 return(

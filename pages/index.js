@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable @next/next/no-sync-scripts */
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import tab_style from '../styles/tabs.module.css'
@@ -11,6 +11,8 @@ import Header from './Header'
 import Link from 'next/link'
 import TabsCard from './tabs'
 import data from './data.json'
+import { useDispatch } from 'react-redux';
+import { login, logout } from './features/UserSlice';
 import {
   geocodeByAddress,
   geocodeByPlaceId,
@@ -20,6 +22,19 @@ import PlacesAutocomplete from 'react-places-autocomplete';
 
 
 export default function Home() {
+  const dispatch = useDispatch();
+  useEffect(()=>{async()=>{
+  
+    let USER = await localStorage.getItem('USER');
+    let EMAIL = await localStorage.getItem('EMAIL');
+    let NAME = await localStorage.getItem('NAME');
+    
+  
+        dispatch(login({ email: EMAIL }));
+   
+        console.log('data user ka data', USER, EMAIL, NAME)
+  }
+}, [])
   const handleSelect = async value => {
     const results = await geocodeByAddress(value)
     const ll = await getLatLng(results[0])
@@ -118,7 +133,7 @@ export default function Home() {
         <div className={styles.tabs_section}>
           <div className={styles.tabs_head_box}>
             <span className={styles.tabs_head}>Discover The <span className={styles.red_color}>Best Food In Town</span></span>
-            <span className='df'>ssd</span>
+           
           </div>
         </div>
 

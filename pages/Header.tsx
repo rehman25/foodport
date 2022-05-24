@@ -31,14 +31,14 @@ function Header() {
                 <label htmlFor="close-btn" className={`${navstyle.btn} ${navstyle.close_btns}`}><i className="fas fa-times"></i></label>
                 <Link href="/"><li><a>Home</a></li></Link>
                 <Link href="/contact"><li><a>Contact</a></li></Link>
-                <Link href="/your_orders"><li><a>Your Orders</a></li></Link>
+                <Link href="/userorders"><li><a>Your Orders</a></li></Link>
                 {/* <Link href="/Main_login"><li><a>Login</a></li></Link> */}
-                <li  onClick={signOut}><a X>{user? "LOGOUT":"LOGIN"}</a></li>
-                <Link href="/ressearch"><li><a>Re Search</a></li></Link>
+                <li  onClick={signOut}><a>{user? "LOGOUT":"LOGIN"}</a></li>
+                {/* <Link href="/ressearch"><li><a>Re Search</a></li></Link> */}
                 <Link href="/about"><li><a>About Us</a></li></Link>
                 <Link href="/register"><li><a className={navstyle.foodport_partner}>BECOME A PARTNER</a></li></Link>
                 <Link href="/basket_item"><li><a><i className="fas fa-shopping-cart"></i>{items.length}</a></li></Link>
-                <li className={navstyle.header_user_icon}>{user? `Hi ${user?.displayName}`: "logged out"}</li>
+                <li className={navstyle.header_user_icon}>{user? `Hi ${user?.email}`: "logged out"}</li>
                 </ul>
                 <label  htmlFor="menu-btn" className={`${navstyle.btn} ${navstyle.menubtn}`}><i className="fas fa-bars"></i></label>
             </div>

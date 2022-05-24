@@ -15,7 +15,7 @@ const { TabPane } = Tabs;
 
 const Tab = (props) => {
   const { address } = props
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0);  
   const [resturant, setResturants] = useState([]);
   const [resturantb, setResturantb] = useState([]);
   const [details, setDetails] = useState(null);
@@ -44,23 +44,36 @@ const Tab = (props) => {
       console.log(snapshot.docs);
       })
   };
-
   const getFoodCart = () => {
-    // ${details.city}, ${details.country_name}
-    let searchQuery = ''
+    let searchQuerys = ''
     if (address && address?.length) {
-      searchQuery = address
+      searchQuerys = address
     } else {
-      searchQuery = `${details.city}, ${details.country_code}, ${details.country_name}`
+      searchQuerys = `${details.city}, ${details.country_code}, ${details.country_name}`
     }
     console.log(details)
-    console.log('address.split(',')', address.split(','))
     onSnapshot(
-      
-      query(collection(db,"foodcart"), where("type", "==", "Food Truck"),  where("address", "==", searchQuery)), (snapshot)=>{setFoodcart(snapshot.docs)
+      query(collection(db,"foodcart"),where("address", "==", searchQuerys)), (snapshot)=>{setFoodcart(snapshot.docs)
       console.log(snapshot.docs);
       })
   };
+
+  // const getFoodCart = () => {
+  //   // ${details.city}, ${details.country_name}
+  //   let searchQuery = ''
+  //   if (address && address?.length) {
+  //     searchQuery = address
+  //   } else {
+  //     searchQuery = `${details.city}, ${details.country_code}, ${details.country_name}`
+  //   }
+  //   console.log(details)
+  //   console.log('address.split(',')', address.split(','))
+  //   onSnapshot(
+      
+  //     query(collection(db,"resturant"), where("type", "==", "Local Resturant") , where("address", "==", searchQuery)), (snapshot)=>{setResturants(snapshot.docs)
+  //       console.log(snapshot.docs);
+  //     })
+  // };
   const getResturant = () => {
     let searchQueryss = ''
     if (address && address?.length) {
@@ -168,7 +181,7 @@ const Tab = (props) => {
       // console.log('state', img)
       return foodcart.map((item, index) => {
         // eslint-disable-next-line react/jsx-key
-        return <TabsCard
+        return <LocalChainTabs
           obj={item}
         />
         // var detail = []
@@ -233,21 +246,7 @@ const Tab = (props) => {
 
         <TabPane tab="Local Resturant" key="Local Resturant">
         <div className={tab_style.flex_row}>
-        {/* {data.foddcard.map((post,key) =>{
-                return(
-                <Link  key={key} href="/resbox">
-                    <div className={tab_style.content_box}>
-                        <img src={post.FoodImg} className={tab_style.img_box_item} />
-                        <div className={tab_style.content_text_box}>
-                            <h5 className={tab_style.content}>
-                               {post.CardHead}
-                                <span>{post.CardLocate}</span>
-                            </h5>
-                        </div>
-                    </div>
-                </Link>
-                  )
-                })} */}
+       
                  {renderResturants()}
         </div>
         </TabPane>
@@ -255,21 +254,7 @@ const Tab = (props) => {
 
         <TabPane tab="Big Chain Resturant" key="Big Chain Resturant">
         <div className={tab_style.flex_row}>
-        {/* {data.foddcard.map((post,key) =>{
-                return(
-                <Link key={key} href="/resbox">
-                    <div  className={tab_style.content_box}>
-                        <img src={post.FoodImg} className={tab_style.img_box_item} />
-                        <div className={tab_style.content_text_box}>
-                            <h5 className={tab_style.content}>
-                               {post.CardHead}
-                                <span>{post.CardLocate}</span>
-                            </h5>
-                        </div>
-                    </div>
-                </Link>
-                  )
-                })} */}
+  
                  {renderResturant()}
         </div>
         </TabPane>

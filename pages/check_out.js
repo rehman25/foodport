@@ -19,17 +19,20 @@ const check_out = () => {
     const items = useSelector(selectItems)
      const total = useSelector(selectTotal)
      const stripePromise=loadStripe(process.env.stripe_public_key)
+
      
      const  createCheckoutSession=async()=>{
          const stripe = await stripePromise;
          const checkoutSession = await axios.post('/api/create-checkout-session',
          {
              items:items,
-             email:"ghayas110gmail.com"
+             email:user.email
          })
          const result= await stripe.redirectToCheckout({
              sessionId:checkoutSession.data.id
-         })
+             
+         }
+         )
          if( result.error) alert(result.error.message) 
      }
 //     const basket = useSelector(selectItems)
