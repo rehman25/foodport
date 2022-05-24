@@ -7,15 +7,15 @@ import DCss from '../styles/dashboard.module.css'
 import Image from 'next/image'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
-import {Resinfo} from './Resinfo'
+import {Resinfo} from '../components/Resinfo'
 function ResturentItems() {
-    const [resturant, setResturant] = useState("")
+    const [resturant, setResturant] = useState([]);
     useEffect(() => {
       getResturant();
     }, [])
   const getResturant = () => {
     onSnapshot(
-query(collection(db,"resturant")),  (snapshot)=>{setResturant(snapshot.docs)
+query(collection(db,"resturant")),(snapshot)=>{setResturant(snapshot.docs)
 // console.log(snapshot.docs);
 }
 

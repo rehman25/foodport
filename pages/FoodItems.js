@@ -1,13 +1,12 @@
 /* eslint-disable react/jsx-key */
 import React, { useState,useEffect } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
-import ResturentSidebar from './ResturentSidebar'
+
 import DCss from '../styles/dashboard.module.css'
 import Image from 'next/image'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
-import {Resinfo} from './Resinfo'
+import {Resinfo} from '../components/Resinfo'
 function FoodItems() {
     const [foodcart, setFoodcart] = useState("")
     useEffect(() => {
