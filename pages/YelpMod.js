@@ -6,8 +6,8 @@ import { useDispatch } from 'react-redux';
 import { selectResturant } from '.././components/features/ResSlice';
 // import Item from 'antd/lib/list/Item';
 
-const YelpMod = ({obj}) => {
-    console.log();
+const YelpMod = ({obj,items}) => {
+    console.log(items);
     const router = useRouter();
     const dispatch = useDispatch();
     const openResturant = () => {
@@ -15,11 +15,7 @@ const YelpMod = ({obj}) => {
         dispatch(selectResturant(payload));
         router.push('/resbox', obj)
     }
-    // function handleClickedd() {
-    //     router.push({ pathname: "/addFood", state: obj });
-
-    // }
-    console.log('rehman', )
+  
 
     return (
     

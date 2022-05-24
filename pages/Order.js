@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Order({obj}) {
+function Order({obj,data}) {
 
-    console.log(obj); 
+    console.log(data); 
     const router = useRouter();
     const  dispatch = useDispatch();
    
@@ -20,7 +20,7 @@ function Order({obj}) {
         router.push({ pathname: "/addFood", state: obj });
 
       }
-      console.log('rehman',obj);
+   
 
 
 
