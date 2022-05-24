@@ -95,8 +95,13 @@
       color: rgba(45,46,47,1);
   }
   .res_box_item{
+    border: 1px solid whitesmoke;
+    box-shadow: -1px 0 3px 0px black;
     display: flex;
     flex-direction: row;
+    padding: 7px;
+    margin-bottom: 6px;
+    border-radius: 4px;
   }
   .flex_fodds{
     /* display: flex; */
@@ -122,9 +127,9 @@
     border-radius: 5px;
   }
   .rating_box .box_item_head_one {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 15px;
-    font-weight: 600;
+    font-weight: 700;
   }
   .rating_box .close_timing{
     display: inline-flex;

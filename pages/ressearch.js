@@ -170,7 +170,7 @@ function ressearch() {
                             </form>
                         </div>
 
-                        <div className='col-lg-7 col-md-12 box_shadow'>
+                        <div className='col-lg-9 col-md-12 box_shadow'>
                             <div className='container-fluid mt-1 '>
                                 <PlacesAutocomplete
                                     value={address}
@@ -238,13 +238,10 @@ function ressearch() {
                             </div>
                             <span className='all_demo'>All Results</span>
                         </div>
-                        <div className='col-lg-3 col-md-12'>
+                         <div className='col-lg-0 col-md-0'>
                             <div className="res_box_locat_map">
-                            {/* <ResMap className="map_layout" lat={selectResturant?.data().lat} lng={selectResturant?.data().lng}/> */}
-                                      
-                                        
                             </div>
-                        </div>
+                         </div>
                     </div>
                     </div>
                 </main>
