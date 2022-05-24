@@ -6,7 +6,7 @@ import Header from './Header'
 import Product from '../public/img/barger.jpg'
 import { collection, onSnapshot, orderBy, query,where } from 'firebase/firestore'
 import { db } from '../firebase'
-import Order from './Order'
+import Order from '../components/Order'
 import { selectUser } from '.././components/features/UserSlice';
 import { useSelector } from 'react-redux';
 export default function userorders({orders}) {
