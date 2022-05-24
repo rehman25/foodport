@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Order({obj,data}) {
+function Order({obj}) {
 
-    console.log(data); 
+   
     const router = useRouter();
     const  dispatch = useDispatch();
    const data=function () {
