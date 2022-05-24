@@ -12,7 +12,7 @@ function Order({obj,data}) {
     const  dispatch = useDispatch();
    
     const openResturant=()=>{
-        let payload = obj
+        let data = obj
          dispatch(selectResturant(payload));
         router.push('/resbox', obj)
       }
