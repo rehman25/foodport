@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Order({obj,data}) {
+function Order({obj}) {
 
    
     const router = useRouter();
