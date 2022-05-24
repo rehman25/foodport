@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import DCss from '../styles/dashboard.module.css'
 import { selectResturant } from './features/ResSlice';
-export const Resinfo = ({obj}) => {
+ const Resinfo = ({obj}) => {
     console.log(obj); 
     const router = useRouter();
     const  dispatch = useDispatch("id");
@@ -44,3 +44,4 @@ export const Resinfo = ({obj}) => {
 
   )
 }
+export default Resinfo;
