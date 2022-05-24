@@ -12,8 +12,8 @@ module.exports = {
           "eqeqeq": "off",
           "curly": "error",
           "quotes": ["error", "double"]
-      }
-  
+      },
+      "noInlineConfig": true
 }
 
 {
