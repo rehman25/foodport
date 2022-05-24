@@ -14,7 +14,7 @@ import CusMod from  './ResCusine'
 import GoogleMapReact from 'google-map-react';
 import ResMap from './ResMap'
 import { useSelector } from 'react-redux';
-import { selectOpenResturant } from './features/ResSlice';
+import { selectOpenResturant } from '.././components/features/ResSlice';
 import SimpleMap from './simpleMap';
 import { addDoc, collection, serverTimestamp, updateDoc, doc, onSnapshot, query } from 'firebase/firestore';
 import PlacesAutocomplete from 'react-places-autocomplete';
