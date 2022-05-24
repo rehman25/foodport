@@ -5,15 +5,11 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Order({obj}) {
+function Order({obj,data}) {
 
-   
     const router = useRouter();
     const  dispatch = useDispatch();
-   const data= ()=> {
-
-       router.push('/foodItem', obj);
-   }
+    let data = obj
     const openResturant=()=>{
         let data = obj
          dispatch(selectResturant(payload));
