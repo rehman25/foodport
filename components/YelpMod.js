@@ -3,7 +3,7 @@ import React from 'react'
 import Router from 'next/router';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import { selectResturant } from '.././components/features/ResSlice';
+import { selectResturant } from './features/ResSlice';
 // import Item from 'antd/lib/list/Item';
 
 const YelpMod = ({obj,items}) => {
