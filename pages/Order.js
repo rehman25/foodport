@@ -9,17 +9,7 @@ function Order({obj,data}) {
 
     const router = useRouter();
     const  dispatch = useDispatch();
-    let data = obj
-    const openResturant=()=>{
-        let data = obj
-         dispatch(selectResturant(payload));
-        router.push('/resbox', obj)
-      }
-      function handleClickedd() {
-        router.push({ pathname: "/addFood", state: obj });
-
-      }
-   
+     
 
 
 
