@@ -139,8 +139,11 @@ export default function Home() {
 
         <div className={tab_style.tab_main}>
           <TabsCard address={address} />
+          
         </div>
-
+        <div className="container" id={styles.Showmorebtn}>
+        <button>Show more</button>
+        </div>
         {/* TESTIMONIALS SECTION */}
         <div className={styles.testimonilas_section}>
           <span className={styles.testi_head}>Customer's Reviews</span>
