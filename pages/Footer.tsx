@@ -25,10 +25,11 @@ function Footer(props) {
             <div className="ft-main-item">
             <h2 className="ft-title">FOR BUSINESS</h2>
             <ul>
-                <li><a >Clain your business page</a></li>
-                <li><a >Success stories</a></li>
-                <li><a>Business support</a></li>
-                <li><a >Advertise</a></li>
+                
+                <Link href="/claimpage"><li><a>Claim your business page</a></li></Link>
+                <Link href="/successstories"><li><a>Success stories </a></li></Link>
+                <Link href="/support"><li><a>Business support</a></li></Link>
+                <Link href="/advertize"><li><a>Advertise</a></li></Link>
             </ul>
             </div>
             <div className="ft-main-item social">
