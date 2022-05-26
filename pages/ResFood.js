@@ -18,7 +18,7 @@ function ResFood({obj}) {
                    <img src={obj?.data().image}/>   
                   <h5>{obj?.data().title}</h5>
                   <p> ${obj?.data().price}</p>
-                  <p onClick={addItemsToBasket}>Add to Cart</p>
+                  <button onClick={addItemsToBasket}>Add to Cart</button>
         </div>
   )
 }

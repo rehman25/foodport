@@ -203,8 +203,32 @@ span.time {
 }
 .res_menu_itembox .inner_item_div p{
     display: inline-block;
-    margin: 3px 10px;
+    margin: 2px 1px;
+    /* border: 1px solid black; */
+    width: 60px;
+    text-align: center;
+    font-weight: 600;
+    background: red;
+    border-radius: 4px;
+    color: white;
+    margin-right: 27px;
+    height: 25px;
 }
+.res_menu_itembox .inner_item_div button{
+
+    position: relative;
+left: 35px;
+background: red;
+color: white;
+border: none;
+width: 93px;
+height: 26px;
+cursor: pointer;
+border-radius: 4px;
+
+}
+
+
 .inner_item_div{
     display: block;
     margin: 5px;
