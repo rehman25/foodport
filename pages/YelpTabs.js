@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { selectResturant } from '.././components/features/ResSlice';
 // import Item from 'antd/lib/list/Item';
-
+import server from '../config';
 const YelpTabs = (props) => {
     console.log();
     const router = useRouter();
@@ -21,7 +21,7 @@ const YelpTabs = (props) => {
 
     const getRestaurantsFromYelp = async() => {
         const data = await axios.get(
-          `${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?term=restaurants&location=${address}&limit=10&client_id=${YELP_API_KEY}&client_secret=${YELP_API_KEY}` ,
+          `${server}https://api.yelp.com/v3/businesses/search?term=restaurants&location=${address}&limit=10&client_id=${YELP_API_KEY}&client_secret=${YELP_API_KEY}` ,
           {
             headers: {
               Authorization: `Bearer ${YELP_API_KEY}`,
