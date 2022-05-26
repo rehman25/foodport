@@ -142,7 +142,7 @@ export default function Home() {
           
         </div>
         <div className="container" id={styles.Showmorebtn}>
-        <button>Show more</button>
+        <a href="/ressearch"><button>Show more</button></a>
         </div>
         {/* TESTIMONIALS SECTION */}
         <div className={styles.testimonilas_section}>
