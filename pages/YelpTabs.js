@@ -21,11 +21,10 @@ const YelpTabs = (props) => {
 
     const getRestaurantsFromYelp = async() => {
         const data = await axios.get(
-          `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${address}&limit=10&client_id=${YELP_API_KEY}&client_secret=${YELP_API_KEY}` ,
+          `${server}https://api.yelp.com/v3/businesses/search?term=restaurants&location=${address}&limit=10&client_id=${YELP_API_KEY}&client_secret=${YELP_API_KEY}` ,
           {
             headers: {
               Authorization: `Bearer ${YELP_API_KEY}`,
-              'Access-Control-Allow-Origin': '*',
               'Content-Type': 'application/json',
               'Accept': 'application/json',
               'Access-Control-Allow-Origin' : '*'
