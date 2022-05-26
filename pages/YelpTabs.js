@@ -21,7 +21,7 @@ const YelpTabs = (props) => {
 
     const getRestaurantsFromYelp = async() => {
         const data = await axios.get(
-          `${server}https://api.yelp.com/v3/businesses/search?term=restaurants&location=${address}&limit=10&client_id=${YELP_API_KEY}&client_secret=${YELP_API_KEY}` ,
+          `${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?term=restaurants&location=${address}&limit=10&client_id=${YELP_API_KEY}&client_secret=${YELP_API_KEY}` ,
           {
             headers: {
               Authorization: `Bearer ${YELP_API_KEY}`,
