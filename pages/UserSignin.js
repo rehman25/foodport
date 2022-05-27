@@ -24,9 +24,11 @@ function UserSignin() {
           dispatch(login({
             email: userAuth.email,  
           }))
+          console.log(userAuth)
           try {
        
             await localStorage.setItem('EMAIL', userAuth.email)
+            await localStorage.setItem('accessToken', userAuth.accessToken)
            
           } catch (e) {
             console.log('é', e)
