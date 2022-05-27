@@ -33,7 +33,7 @@ function register() {
             }))
           }).catch(function(error) {
             var errorMessage = error.message;
-            console.log("errorMessage: "+ errorMessage)
+            alert("errorMessage: "+ errorMessage)
           });
         router.push('/')
       }
