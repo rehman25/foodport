@@ -14,10 +14,7 @@ const YelpTabs = (props) => {
     const dispatch = useDispatch();
     const { address} = props
     const YELP_API_KEY ="Aapdi_gIFzHZhFPlM2FNzdSXXyA5RNko6A6z8zrz62UzHcWlgf_DQ3C_w0TSqsDEst4fLd8Y5rcYpP8WMgXnDAjA4jxHxJ4zs8NUmBMkRTFYeQwbPz4Yro40Qcl-YnYx";
-
     const [restaurantsFromYelp, setRestaurantsFromYelp ] = useState([])
-
-  
 
     const getRestaurantsFromYelp = async() => {
         const data = await axios.get(
@@ -27,10 +24,7 @@ const YelpTabs = (props) => {
               Authorization: `Bearer ${YELP_API_KEY}`,
               'Content-Type': 'application/json',
               'Accept': 'application/json',
-              'Access-Control-Allow-Origin' : '*'
-
-             
-    
+              'Access-Control-Allow-Origin' : '*'             
             },
             
           },
