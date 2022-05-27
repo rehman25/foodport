@@ -24,7 +24,7 @@ function  tandc() {
 
 
             </div>
-            <div className='about-content'>
+            <div className='container'>
                 <br />
                 <br />
                  <h4><b>Do you have any questions? Is there anything we can help you with?</b></h4>

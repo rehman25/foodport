@@ -24,7 +24,7 @@ function about() {
 
 
                 </div>
-                <div className='about-content'>
+                <div className='container'>
                     <br />
                     <br />
                     <h4><b>Get To Know foodport</b></h4>

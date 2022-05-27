@@ -17,7 +17,7 @@
     font-weight: 700;
     z-index: 1000px;
     position: relative;
-    z-index: 99999;
+    /* z-index: 99999; */
     letter-spacing: 4px;
     line-height: 30px;
 }
