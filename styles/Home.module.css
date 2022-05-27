@@ -415,12 +415,22 @@ input.location-search-input::placeholder {
   }
   .search_input button{
     padding: 10px 15px;
+    position: absolute;
+    right: 1px;
+    bottom: -26px;
   }
   .searches i{
     display: none;
   }
 }
 @media screen and (max-width: 376px){
+  .search_input button {
+    padding: 10px 15px;
+    position: absolute;
+    right: 1px;
+    bottom: -42px;
+
+}
   .search_box .text_box_home .text_span {
       font-size: 25px;
   }
