@@ -1,5 +1,6 @@
 #main_bg_color{
-    background: red;
+    background-image: url(../public/img/main_login_bg.jpg);
+    /* background: red; */
     height: 100vh;
     display: flex;
     justify-content: center;

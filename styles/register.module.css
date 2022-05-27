@@ -36,13 +36,13 @@
     height: 100vh;
     background-repeat: no-repeat;
 }
-.form_img form{
+.form_img section{
     position: absolute;
     top: 17%;
     width: 100%;
     z-index: 9;
 }
-.form_img form input:focus{
+.form_img section input:focus{
     background-color: rgba(128, 128, 128, 0.151) !important;
     border: none !important;
     transition: all .7s linear;
@@ -50,11 +50,11 @@
     color: black;
     font-family: Poppins;
 }
-.form_img form input::placeholder{
+.form_img section input::placeholder{
     letter-spacing: 1px;
     color: black;
 }
-.form_img form input{
+.form_img section input{
     border-radius: 0% !important;
     border-bottom: 1px solid black !important;
     border: none;
@@ -128,7 +128,7 @@
     .form_row{
         width: 90%;
     }
-    .form_img form input{
+    .form_img section input{
         font-size: 13px;
     }
     .form_btns{

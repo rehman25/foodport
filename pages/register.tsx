@@ -23,8 +23,10 @@ function register() {
         setSelect(e.target.value);
        
       }
+    
       const registers = () => {
           createUserWithEmailAndPassword(auth,email,password).then((userAuth) => {
+              console.log(userAuth)
             dispatch(login({
                 email: userAuth.user.email,
                 uid: userAuth.user.uid,
@@ -35,22 +37,9 @@ function register() {
             var errorMessage = error.message;
             console.log("errorMessage: "+ errorMessage)
           });
-        router.push('/')
+          
+        router.push(select==='user' ? '/' : '/ResturentOwner')
       }
-      const reg = () => {
-        createUserWithEmailAndPassword(auth,email,password).then((userAuth) => {
-          dispatch(login({
-              email: userAuth.user.email,
-              uid: userAuth.user.uid,
-              displayName: name,
-              usrtype:select
-          }))
-        }).catch(function(error) {
-          var errorMessage = error.message;
-          console.log("errorMessage: "+ errorMessage)
-        });
-      router.push('/')
-    }
   return(
       <>
         <Head>
@@ -71,7 +60,7 @@ function register() {
             </div>
 
             
-            <form action="">
+            <section>
                 <span className={regis_style.center_img}> <img src="/img/logologo.f87723ea.png" alt="" /></span>
                 {/* className="row justify-content-center" */}
                 <div  className={`${regis_style.form_row} ${regis_style.form_secd}`}>
@@ -107,15 +96,12 @@ function register() {
                        <input type="text" value={address} className="form-control" placeholder="Address" onChange={(e) => setAddress(e.target.value)}/>}
                     <br />
                     <br />
-                    {/* {select==="user"&& 
-                        <button className={regis_style.form_btns} onClick={registers}>REGISTER</button> }
-                                {select==="business"&& 
-                        <button className={regis_style.form_btns} onClick={reg}>REGISTER</button> }    */}
+                    
                     <button className={regis_style.form_btns} onClick={registers}>REGISTER</button> 
                 </div>
 
                 </div>
-            </form>
+                </section>
         </div>
         </main>
 

@@ -13,44 +13,21 @@ const YelpTabs = (props) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const { address} = props
-    const YELP_API_KEY ="Aapdi_gIFzHZhFPlM2FNzdSXXyA5RNko6A6z8zrz62UzHcWlgf_DQ3C_w0TSqsDEst4fLd8Y5rcYpP8WMgXnDAjA4jxHxJ4zs8NUmBMkRTFYeQwbPz4Yro40Qcl-YnYx";
-
     const [restaurantsFromYelp, setRestaurantsFromYelp ] = useState([])
 
-  
-
     const getRestaurantsFromYelp = async() => {
-        const data = await axios.get(
-          `${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?term=restaurants&location=${address}&limit=10&client_id=${YELP_API_KEY}&client_secret=${YELP_API_KEY}` ,
-          {
-            headers: {
-              Authorization: `Bearer ${YELP_API_KEY}`,
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-              'Access-Control-Allow-Origin' : '*'
-
-             
-    
-            },
-            
-          },
-        )
-      
-        .then((json) => {
-             setRestaurantsFromYelp(
-                json.data.businesses
-               )
-          
-            console.log({ items: json.data.businesses  });
+        await fetch(`http://localhost:3000/api/yelp?term=restaurants&location=${address}`)
+        .then(res => res.json().then(data => {
+            setRestaurantsFromYelp(data.businesses);
+        })).catch(err => {
+            console.log(err);
         })
-        .catch(err => {
-          console.log(err);
-        });
-      };
-
-      useEffect(() => {
+    }
+    
+    useEffect(() => {
         getRestaurantsFromYelp()
     },[address])
+
     const openResturant = () => {
         let payload = restaurantsFromYelp[0]
         dispatch(selectResturant(payload));
@@ -67,7 +44,7 @@ const YelpTabs = (props) => {
                 <>
                 <div className='col-lg-12 mt-5 res_item_shadow'>
                     {console.log("Res",restaurantsFromYelp)}
-                    {restaurantsFromYelp.map((items,index) => {
+                    {restaurantsFromYelp?.map((items,index) => {
                         return(
 
                    
