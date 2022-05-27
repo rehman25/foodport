@@ -13,31 +13,6 @@ const YelpTabs = (props) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const { address} = props
-<<<<<<< HEAD
-    const YELP_API_KEY ="Aapdi_gIFzHZhFPlM2FNzdSXXyA5RNko6A6z8zrz62UzHcWlgf_DQ3C_w0TSqsDEst4fLd8Y5rcYpP8WMgXnDAjA4jxHxJ4zs8NUmBMkRTFYeQwbPz4Yro40Qcl-YnYx";
-    const [restaurantsFromYelp, setRestaurantsFromYelp ] = useState([])
-
-    const getRestaurantsFromYelp = async() => {
-        const data = await axios.get(
-          `${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?term=restaurants&location=${address}&limit=10&client_id=${YELP_API_KEY}&client_secret=${YELP_API_KEY}` ,
-          {
-            headers: {
-              Authorization: `Bearer ${YELP_API_KEY}`,
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-              'Access-Control-Allow-Origin' : '*'             
-            },
-            
-          },
-        )
-      
-        .then((json) => {
-             setRestaurantsFromYelp(
-                json.data.businesses
-               )
-          
-            console.log({ items: json.data.businesses  });
-=======
     const [restaurantsFromYelp, setRestaurantsFromYelp ] = useState([])
 
     const getRestaurantsFromYelp = async() => {
@@ -46,7 +21,6 @@ const YelpTabs = (props) => {
             setRestaurantsFromYelp(data.businesses);
         })).catch(err => {
             console.log(err);
->>>>>>> c7f92ec3beb0827270309c1411a9419a325e0bab
         })
     }
     
