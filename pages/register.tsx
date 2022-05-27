@@ -37,6 +37,7 @@ function register() {
           });
         router.push('/')
       }
+
   return(
       <>
         <Head>
@@ -57,7 +58,7 @@ function register() {
             </div>
 
             
-            <form action="">
+            <form>
                 <span className={regis_style.center_img}> <img src="/img/logologo.f87723ea.png" alt="" /></span>
                 {/* className="row justify-content-center" */}
                 <div  className={`${regis_style.form_row} ${regis_style.form_secd}`}>

@@ -88,7 +88,7 @@ function UserSignin() {
                     <br />
                     <button className={form_style.form_btns} onClick={logintoApp}>LOGIN</button>  
                     <br />
-                    <div className={form_style.btns_div}>Not a Member? <a href="/register">Register Now</a>  
+                    <div className={form_style.btns_div}>Not a Member? <Link href="/register">Register</Link>  
                         {/* <button className={form_style.form_btns}>Register Now</button> */}
                     </div>
                 </div>
