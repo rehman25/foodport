@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { selectResturant } from '.././components/features/ResSlice';
 // import Item from 'antd/lib/list/Item';
-
+import server from '../config';
 const YelpTabs = (props) => {
     console.log();
     const router = useRouter();
