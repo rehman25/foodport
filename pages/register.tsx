@@ -8,6 +8,7 @@ import { login } from '.././components/features/UserSlice'
 import regis_style from '../styles/register.module.css'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import Link from 'next/link';
 function register() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -61,7 +62,7 @@ function register() {
 
             
             <section>
-                <span className={regis_style.center_img}> <img src="/img/logologo.f87723ea.png" alt="" /></span>
+                <span className={regis_style.center_img}><Link href="/"><img src="/img/logologo.f87723ea.png" alt="" /></Link></span>
                 {/* className="row justify-content-center" */}
                 <div  className={`${regis_style.form_row} ${regis_style.form_secd}`}>
     

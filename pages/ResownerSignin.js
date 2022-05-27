@@ -65,7 +65,7 @@ function ResownerSignin() {
             </div>
    
           <form >
-          <span className={form_style.center_logo}> <img src="/img/logologo.f87723ea.png" alt="" className={form_style.form_logo}/></span>
+          <span className={form_style.center_logo}> <Link href="/"> <img src="/img/logologo.f87723ea.png" alt="" className={form_style.form_logo}/></Link></span>
             <div className="row justify-content-center" id={form_style.form_row}>
                 <div className="col-lg-10">
                     <h3 className="text-center"> Sign In</h3>

@@ -25,7 +25,7 @@ function Main_login() {
 
                   <div className={m_style.inner_login_box}>
                     <div className={m_style.box_logo}>
-                      <img src="/img/logologo.f87723ea.png" alt="" />
+                  <Link href="/"><img src="/img/logologo.f87723ea.png" alt="" /></Link>
                     </div>
                   </div>
 
