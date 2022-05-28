@@ -4,18 +4,25 @@
 } */
 
 .main_from{
-    height: 700px;
+    height: 650px;
     width: 481px;
     margin: 0 auto;
     box-shadow: 0px 3px 39px grey;
     top: 125px;
     position: relative;
     background-color: white;
+    border-radius: 6px;
 }
 .center_logo{
     margin: auto;
     display: block;
     text-align: center;
+}
+.center_logo a img{
+    height: 62px;
+    vertical-align: middle;
+    border-style: none;
+    margin-top: 12px;
 }
 .main_from::after{
     position: absolute;
@@ -132,6 +139,7 @@
     height: 19px;
     top: 28px;
 }
+
 @media screen and (max-width:500px) {
     .main_from{
         width: 400px;

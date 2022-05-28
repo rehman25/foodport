@@ -39,3 +39,10 @@
 .main_btn_box .owner_login{
     margin-bottom: 60px;
 }
+
+
+@media screen and (max-width:992px) {
+    .left_img_box{
+        display: none;
+    }
+}
