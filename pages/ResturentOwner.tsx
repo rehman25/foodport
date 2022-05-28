@@ -29,20 +29,21 @@ function ResturentOwner() {
         });
     }
 
-    const [resturant, setResturant] = useState("")
-    const [foodcart, setFoodCart] = useState("")
+    const [resturant, setResturant] = useState([])
+    const [foodcart, setFoodCart] = useState([])
     useEffect(() => {
         getResturant();
         getFoodCart()
     }, [])
     const getResturant = () => {
         onSnapshot(
+
             query(collection(db, "resturant")), (snapshot) => {
                 setResturant(snapshot.docs)
                 console.log(snapshot.docs);
-            }
 
-        )
+            })
+    
 
     }
     const renderResturant = () => {
