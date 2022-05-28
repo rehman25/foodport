@@ -2,7 +2,7 @@
     background-image: url(../public/img/main_login_bg.jpg);
     /* background: red; */
     height: 100vh;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: center;
 }
