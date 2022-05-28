@@ -13,12 +13,12 @@ export const TopFood = ({obj}) => {
     const openResturant=()=>{
         let payload = obj
          dispatch(selectResturant(payload));
-        router.push('/foodItem', obj)
+        router.push('/', obj)
       }
-      function handleClickedd() {
-        router.push({ pathname: "/addFood", query: { id: obj.id } });
+    //   function handleClickedd() {
+    //     router.push({ pathname: "/addFood", query: { id: obj.id } });
         
-      }
+    //   }
       // console.log(obj);
   return (
     <div className={`${DCss.top_cards_item}`}>

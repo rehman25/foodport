@@ -3,12 +3,14 @@ import React,{useState, useEffect} from 'react'
 import styles from '../styles/success.module.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from './Header'
+import { useRouter } from 'next/router';
 import Product from '../public/img/barger.jpg'
 import { collection, onSnapshot, orderBy, query,where } from 'firebase/firestore'
 import { db } from '../firebase'
 import Order from '../components/Order'
 import { selectUser } from '.././components/features/UserSlice';
 import { useSelector } from 'react-redux';
+import Head from 'next/head';
 export default function userorders({orders}) {
     const user =useSelector(selectUser);
     const [userorder, setUserOrder] = useState([]);
@@ -26,7 +28,7 @@ export default function userorders({orders}) {
       if(user){
           getUserOrder();
       }else(
-          alert("Please Login")
+      alert('login please')
       )
         
     
@@ -52,6 +54,9 @@ export default function userorders({orders}) {
 
     return (
         <>
+            <Head>
+            <title>Food Port</title>
+            </Head>
             <Header />
             <div className="container" id={styles.order_main}>
             
