@@ -12,7 +12,7 @@ const YelpTabs = (props) => {
     console.log();
     const router = useRouter();
     const dispatch = useDispatch();
-    const { address} = props
+    const { address} = props;
     const [restaurantsFromYelp, setRestaurantsFromYelp ] = useState([])
 
     const getRestaurantsFromYelp = async() => {
