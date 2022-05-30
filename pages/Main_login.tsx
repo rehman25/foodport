@@ -25,13 +25,13 @@ function Main_login() {
 
                   <div className={m_style.inner_login_box}>
                     <div className={m_style.box_logo}>
-                  <Link href="/"><img src="/img/logologo.f87723ea.png" alt="" /></Link>
+                  <Link href="/"><img src="/img/logologo.f87723ea.png" alt="" className='logo' /></Link>
                     </div>
                   </div>
 
                   <div className={m_style.main_btn_box}>
                     <Link href="/UserSignin"><button className={m_style.user_login}>Login As User</button></Link>
-                   <Link href="/ResownerSignin"><button className={m_style.owner_login}>Login As Resturent Owner</button></Link>
+                   <Link href="/ResownerSignin"><button className={m_style.owner_login}>Login As Restaurant Owner</button></Link>
                   </div>
 
                 </div>

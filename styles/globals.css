@@ -98,3 +98,6 @@ svg {
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
   background-color: red !important;
 }
+logo{
+  cursor: pointer;
+}

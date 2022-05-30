@@ -81,7 +81,7 @@ function register() {
                 <div className="col-lg-10">
                     <h3 className="text-center">Registration</h3>
                     <div className={`${regis_style.icons_group} ${regis_style.icons_groups}`}>
-                        <img src="/img/signin.png" alt="" />
+                        <img src="/img/signin.png" alt=""  className='logo'/>
                         <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter Your Name" />
                     </div>
                     <div className={`${regis_style.icons_group} ${regis_style.icons_groups}`}>
