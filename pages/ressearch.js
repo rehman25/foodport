@@ -233,7 +233,7 @@ function ressearch() {
 
                             <div className='col-lg-12 mt-5 res_item_shadow flex_fodds'>
                                 <ResMod  address={address}/>
-                                     <CusMod   cusine={cusine} />
+                                
                                <YelpTabs  address={address}/>
                             </div>
                             <span className='all_demo'>All Results</span>

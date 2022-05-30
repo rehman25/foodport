@@ -33,7 +33,7 @@ function about() {
                     <br /> In three words, the process of ordering food & grocery online is simple, fast, and convenient. </p>
                     <br />
                     <h4> <b>How to Order</b></h4>
-                    <p>To order food delivery in Pakistan, follow these simple steps:</p>
+                    <p>To order food delivery in United States, follow these simple steps:</p>
                     <ol>
                         
                         <li>Find a restaurant. Enter your delivery address in the location form to see all the places that deliver to your location. It can be your home, office, a hotel or even parks!</li> <br />
@@ -43,7 +43,7 @@ function about() {
                     </ol>
                     <p>How to Contact foodport</p>
                     <br />
-                    <p>If you wish to contact us regarding any questions or comments you may have, please send an email to support@foodport.pk or connect with us via our inbuilt help center.</p>
+                    <p>If you wish to contact us regarding any questions or comments you may have, please send an email to support@foodport.us or connect with us via our inbuilt help center.</p>
 
                     </div>
 

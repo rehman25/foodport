@@ -16,7 +16,7 @@ const YelpTabs = (props) => {
     const [restaurantsFromYelp, setRestaurantsFromYelp ] = useState([])
 
     const getRestaurantsFromYelp = async() => {
-        await fetch(`http://localhost:3000/api/yelp?term=restaurants&location=${address}`)
+        await fetch(`https://www.foodport.us/api/yelp?term=restaurants&location=${address}`)
         .then(res => res.json().then(data => {
             setRestaurantsFromYelp(data.businesses);
         })).catch(err => {
