@@ -74,7 +74,7 @@ function register() {
 
             
             <section>
-                <span className={regis_style.center_img}><Link href="/"><img src="/img/logologo.f87723ea.png" alt="" /></Link></span>
+                <span className={regis_style.center_img}><Link href="/"><img src="/img/logologo.f87723ea.png" alt="" className='logo'/></Link></span>
                 {/* className="row justify-content-center" */}
                 <div  className={`${regis_style.form_row} ${regis_style.form_secd}`}>
     
