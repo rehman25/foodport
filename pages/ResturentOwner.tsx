@@ -18,23 +18,28 @@ function ResturentOwner() {
     const router = useRouter();
     const user = useSelector(selectUser);
     const dispatch = useDispatch()
-    const SignOut = () => {
-
-        signOut(auth).then(() => {
-            alert("Sign Out")
-            dispatch(logout())
-            router.push('Main_login')
-        }).catch((error) => {
-            // An error happened.
-        });
-    }
-
     const [resturant, setResturant] = useState([])
     const [foodcart, setFoodCart] = useState([])
-    useEffect(() => {
-        getResturant();
-        getFoodCart()
-    }, [])
+    const [usersName, setUsersName ] = useState("");
+  useEffect(() => {
+    // Perform localStorage action
+    getResturant();
+    getFoodCart()
+    const users = localStorage.getItem('displayName');
+    setUsersName(users ? users : "logged Out");
+  
+  }, [])
+
+
+    const SignOut = () => {
+
+        if(usersName!=="logged Out"){
+            localStorage.clear();
+              router.push("./Main_login");
+    }
+
+
+
     const getResturant = () => {
         onSnapshot(
             query(collection(db, "resturant")), (snapshot) => {
@@ -96,7 +101,9 @@ function ResturentOwner() {
                             <div className={`${DCss.dash_head_width_scd}`}>
                                 <h5>Welcome to Dashboard
                                     <br />
-                                    <span> Your Email : {user?.email}</span>
+                                    <span> Your Name : 
+                                    {`${usersName}`}
+                                    </span>
                                 </h5>
                             </div>
                             <div className={`${DCss.dash_head_width}`}>
@@ -330,4 +337,4 @@ function ResturentOwner() {
     )
 }
 
-export default ResturentOwner
+export default ResturentOwner;

@@ -18,6 +18,7 @@ function register() {
     const [phone, setPhone] = useState("");
     const [bname, setBName] = useState("");
     const [address, setAddress] = useState("")
+    const [uids, setUids] = useState("")
     const [hasError, Error] = useState("");
     const [select,setSelect]= React.useState();
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function register() {
       const registers = async() => {
 
           createUserWithEmailAndPassword(auth,email,password).then((userAuth) => {
-              console.log(userAuth)
+              setUids(userAuth.user.uid)
             dispatch(login({
                 email: userAuth.user.email,
                 uid: userAuth.user.uid,
@@ -47,7 +48,8 @@ function register() {
                 password:password,
                 name:name,
                 phone:phone,
-                select:select
+                select:select,
+                uid:uids
               })
           
        
