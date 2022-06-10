@@ -18,13 +18,15 @@ function Header() {
   useEffect(() => {
     // Perform localStorage action
     const users = localStorage.getItem('displayName')
-    setUsersName(users ? users : "logged Out")
+    console.log(users,"local storage")
+    setUsersName(((users!==null)&&(users!==undefined)) ? users : "Login")
   }, [])
 
   const  dispatch = useDispatch();
   const signOut=()=>{
 if(usersName!=="logged Out"){
   localStorage.clear();
+  const users = null;
     router.push("./Main_login");
 }
 }
@@ -43,7 +45,7 @@ if(usersName!=="logged Out"){
                 <Link href="/contact"><li><a>Contact</a></li></Link>
                 <Link href="/userorders"><li><a>Your Orders</a></li></Link>
                 {/* <Link href="/Main_login"><li><a>Login</a></li></Link> */}
-                <li  onClick={signOut}><a>{usersName? "LOGOUT":"LOGIN"}</a></li>
+                <li  onClick={signOut}><a>{((usersName!==null)&&(usersName!=="Login")) ? "LOGOUT" : (usersName==="Login") ? "LOGIN" : "LOGIN"}</a></li>
                 {/* <Link href="/ressearch"><li><a>Re Search</a></li></Link> */}
                 <Link href="/about"><li><a>About Us</a></li></Link>
                 <Link href="/register"><li><a className={navstyle.foodport_partner}>BECOME A PARTNER</a></li></Link>
