@@ -14,108 +14,121 @@ import axios from 'axios';
 
 
 const check_out = () => {
+
     const user = useSelector(selectUser)
     const items = useSelector(selectItems)
-     const total = useSelector(selectTotal)
-     const stripePromise=loadStripe(process.env.stripe_public_key)
+    const total = useSelector(selectTotal)
+    const [usersData, setUsersData] = useState();
+    const stripePromise = loadStripe(process.env.stripe_public_key)
+    const users = {
+    };
+    useEffect(() => {
+        // Perform localStorage action
 
-     
-     const  createCheckoutSession=async()=>{
-         const stripe = await stripePromise;
-         const checkoutSession = await axios.post('/api/create-checkout-session',
-         {
-             items:items,
-             email:user.email
-         })
-         const result= await stripe.redirectToCheckout({
-             sessionId:checkoutSession.data.id
-             
-         }
-         )
-         if( result.error) alert(result.error.message) 
-     }
-//     const basket = useSelector(selectItems)
-//     const history = useHistory
-//     const stripe = useStripe
-//     const elements = useElements
-//     const [succeeded, setSucceeded] = useState(false);
-//     const [processing, setProcessing] = useState("");
-//     const [error, setError] = useState(null);
-//     const [disabled, setDisabled] = useState(true);
-//     const [clientSecret, setClientSecret] = useState(true);
-//     const [Name, setName] = useState("")
-//     const [phone, setPhone] = useState("")
-//     const [country, setCountry] = useState("")
-//     const [Zipcode, setZipCode] = useState("")
-//     const [state, setState] = useState("")
-//     const [address, setAddress] = useState("")
-//     const clientSecretS = (clientSecret).toString
-//     useEffect(() => {
-//         // generate the special stripe secret which allows us to charge a customer
-//         const getClientSecret = async () => {
-//             const response = await axios({
-//                 method: 'post',
-//                 // Stripe expects the total in a currencies subunits
-//                 url: `/payments/create?total=${total}`
-//             });
-//             setClientSecret(response.data.clientSecret)
-//         }
+        users.name = localStorage.getItem("displayName");
 
-//         getClientSecret();
-//     }, [basket])
+        users.email = localStorage.getItem("email");
+        setUsersData(users ? users : "logged Out");
+    }, []);
+    const createCheckoutSession = async () => {
+        const stripe = await stripePromise;
+        const checkoutSession =
+         await axios.post('/api/create-checkout-session',
+            {
+                items: items,
+                email: usersData.email
+            })
+        const result = await stripe.redirectToCheckout({
+            sessionId: checkoutSession.data.id
+        }
 
-//     console.log('THE SECRET IS >>>', clientSecret)
-//     console.log('👱', user)
+        )
+        if (result.error) alert(result.error.message)
+    }
+    //     const basket = useSelector(selectItems)
+    //     const history = useHistory
+    //     const stripe = useStripe
+    //     const elements = useElements
+    //     const [succeeded, setSucceeded] = useState(false);
+    //     const [processing, setProcessing] = useState("");
+    //     const [error, setError] = useState(null);
+    //     const [disabled, setDisabled] = useState(true);
+    //     const [clientSecret, setClientSecret] = useState(true);
+    //     const [Name, setName] = useState("")
+    //     const [phone, setPhone] = useState("")
+    //     const [country, setCountry] = useState("")
+    //     const [Zipcode, setZipCode] = useState("")
+    //     const [state, setState] = useState("")
+    //     const [address, setAddress] = useState("")
+    //     const clientSecretS = (clientSecret).toString
+    //     useEffect(() => {
+    //         // generate the special stripe secret which allows us to charge a customer
+    //         const getClientSecret = async () => {
+    //             const response = await axios({
+    //                 method: 'post',
+    //                 // Stripe expects the total in a currencies subunits
+    //                 url: `/payments/create?total=${total}`
+    //             });
+    //             setClientSecret(response.data.clientSecret)
+    //         }
 
-//     const handleSubmit = async (event) => {
-//         // do all the fancy stripe stuff...
-//         event.preventDefault();
-//         setProcessing(true);
+    //         getClientSecret();
+    //     }, [basket])
 
-//         const payload = await stripe.confirmCardPayment(clientSecret, {
-//             payment_method: {
-//                 card: elements.getElement(CardElement)
-              
-//             }
-        
-//         }).then(({ paymentIntent }) => {
-//             // paymentIntent = payment confirmation
-// {console.log('Stripe',CardElement)}
-//             db
-//               .collection('users')
-//               .doc(user?.uid)
-//               .collection('orders')
-//               .doc(paymentIntent.id)
-//               .set({
-//                   user:user?.email,
-//                   name:user?.displayName,
-//                   country:country,
-//                   zipcode:Zipcode,
-//                   basket: basket,
-//                   state:state,
-//                   phone:phone,
-//                   address,address,
-//                   amount: paymentIntent.amount,
-//                   created: paymentIntent.created
-//               })
+    //     console.log('THE SECRET IS >>>', clientSecret)
+    //     console.log('👱', user)
 
-//             setSucceeded(true);
-//             setError(null)
-//             setProcessing(false)
+    //     const handleSubmit = async (event) => {
+    //         // do all the fancy stripe stuff...
+    //         event.preventDefault();
+    //         setProcessing(true);
 
-          
+    //         const payload = await stripe.confirmCardPayment(clientSecret, {
+    //             payment_method: {
+    //                 card: elements.getElement(CardElement)
 
-//             history.replace('/orders')
-//         })
+    //             }
 
-//     }
+    //         }).then(({ paymentIntent }) => {
+    //             // paymentIntent = payment confirmation
+    // {console.log('Stripe',CardElement)}
+    //             db
+    //               .collection('users')
+    //               .doc(user?.uid)
+    //               .collection('orders')
+    //               .doc(paymentIntent.id)
+    //               .set({
+    //                   user:user?.email,
+    //                   name:user?.displayName,
+    //                   country:country,
+    //                   zipcode:Zipcode,
+    //                   basket: basket,
+    //                   state:state,
+    //                   phone:phone,
+    //                   address,address,
+    //                   amount: paymentIntent.amount,
+    //                   created: paymentIntent.created
+    //               })
 
-//     const handleChange = event => {
-//         // Listen for changes in the CardElement
-//         // and display any errors as the customer types their card details
-//         setDisabled(event.empty);
-//         setError(event.error ? event.error.message : "");
-//     }
+    //             setSucceeded(true);
+    //             setError(null)
+    //             setProcessing(false)
+
+
+
+    //             history.replace('/orders')
+    //         })
+
+    //     }
+
+    //     const handleChange = event => {
+    //         // Listen for changes in the CardElement
+    //         // and display any errors as the customer types their card details
+    //         setDisabled(event.empty);
+    //         setError(event.error ? event.error.message : "");
+    //     }
+
+
     return (
         <>
 
@@ -137,19 +150,20 @@ const check_out = () => {
                     <div className="items_container">
 
                         <div className="itemsss">
-                        {items.map(item => (
-                            <CheckoutProduct
-                                id={item.id}
-                                title={item.title}
-                                description={item.description}
-                                img={item.image}
-                                price={item.price}
-                                rating={item.rating}
-                                _id={item._id}
-                                quantity={item.quantity}
-                                price_total={item.price_total}
-                            />
-                        ))}
+                            {items.map(item => (
+                                <CheckoutProduct
+                                    id={item.id}
+                                    title={item.title}
+                                    description={item.description}
+                                    img={item.image}
+                                    price={item.price}
+                                    rating={item.rating}
+                                    _id={item._id}
+                                    quantity={item.quantity}
+                                    price_total={item.price_total}
+                                    remail={item.remail}
+                                />
+                            ))}
                         </div>
 
                     </div>

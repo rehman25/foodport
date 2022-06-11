@@ -1,4 +1,3 @@
-
 import { buffer } from 'micro'
 import * as admin from 'firebase-admin'
 
@@ -26,6 +25,8 @@ const fullfillOrder = async (session) => {
             images: JSON.parse(session.metadata.images),
             timestamp: admin.firestore.FieldValue.serverTimestamp(),
             email: session.metadata.email,
+            title : session.metadata.name,
+            remail : session.metadata.remail,   
         })
         .then(() => {
             console.log(`SUCCESS: Order ${session.id} has been added to DB!`)
