@@ -15,21 +15,26 @@ const endpointSecurit = process.env.STRIPE_SIGNING_SECRET
 
 const fullfillOrder = async (session) => {
     console.log('Fullfilling Order!!!')
-
+    
     return app
         .firestore()
         .collection('users')
         .doc(session.id)
         .set({
             amount: session.amount_total / 100, 
-            images: JSON.parse(session.metadata.images),
+            // images: JSON.parse(session.metadata.images),
+            order: JSON.parse(session.metadata.order),
             timestamp: admin.firestore.FieldValue.serverTimestamp(),
             email: session.metadata.email,
-            title : session.metadata.name,
-            remail : session.metadata.remail,   
+            // title : session.metadata.name,
+            remail : session.metadata.remail, 
+            resname: session.metadata.resname,    
         })
         .then(() => {
             console.log(`SUCCESS: Order ${session.id} has been added to DB!`)
+            console.log(JSON.stringify(session, null, 2))
+            
+            
         })
 }
 

@@ -15,7 +15,8 @@ export const Resinfo = ({obj}) => {
         router.push('/foodItem', obj)
       }
       function handleClickedd() {
-        router.push({ pathname: "/addFood", query: { id: obj.id } });
+        router.push({ pathname: "/addFood", query: { id: obj.id,resname:obj.data().resName } });
+        
         
       }
       // console.log(obj);

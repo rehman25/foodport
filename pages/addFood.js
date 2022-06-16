@@ -1,6 +1,6 @@
 
 
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useRouter } from 'next/router'
 import addfood from '../styles/AddFood.module.css'
 import Head from 'next/head'
@@ -24,7 +24,14 @@ const addFood = () => {
     let params = useParams()
     const router = useRouter()
     const {id} = router.query
+    const {resname} = router.query
     //  let location = useLocation('')
+    useEffect(() => {
+  
+
+      const users = localStorage.getItem("email");
+      setRemail(users ? users : "");
+  }, []);
     const addInagetoPost =(e)=>{
       const reader = new FileReader();
       if (e.target.files[0]){
@@ -47,6 +54,7 @@ const addFood = () => {
           description:description,
           file:file,
           remail:remail,
+          resname:resname,
         time:serverTimestamp(),
           })
         

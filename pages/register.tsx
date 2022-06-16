@@ -27,7 +27,7 @@ function register() {
         setSelect(e.target.value);
        
       }
-    
+      const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
       const registers = async() => {
 
           createUserWithEmailAndPassword(auth,email,password).then((userAuth) => {
@@ -42,7 +42,15 @@ function register() {
             var errorMessage = error.message;
             console.log("errorMessage: "+ errorMessage)
           });
-        
+          await stripe.accounts.create({
+            type: 'custom',
+            country: 'US',
+            email: email,
+            capabilities: {
+              card_payments: {requested: true},
+              transfers: {requested: true},
+            },
+          });
             const docRef = await addDoc(collection(db, 'userid'), {
                 email:email,
                 password:password,
