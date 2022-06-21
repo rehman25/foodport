@@ -11,10 +11,17 @@ import { selectUser } from '.././components/features/UserSlice';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
+import { addDoc, collection, serverTimestamp, updateDoc, doc } from 'firebase/firestore'; 
+
 
 
 const check_out = () => {
-
+    const [Name, setName] = useState("")
+    const [phone, setPhone] = useState("")
+    const [country, setCountry] = useState("")
+    const [Zipcode, setZipCode] = useState("")
+    const [state, setState] = useState("")
+    const [address, setAddress] = useState("")
     const user = useSelector(selectUser)
     const items = useSelector(selectItems)
     const total = useSelector(selectTotal)
@@ -31,10 +38,25 @@ const check_out = () => {
         setUsersData(users ? users : "logged Out");
     }, []);
     const createCheckoutSession = async () => {
+        const docRef = await addDoc(collection(db, 'userorder'), {
+            name:Name,
+            email:usersData.email,
+            country:country,
+            zipcode:Zipcode,
+            state:state,
+            phone:phone,
+            address:address,
+        })
         const stripe = await stripePromise;
         const checkoutSession =
          await axios.post('/api/create-checkout-session',
             {
+                name:Name,
+                country:country,
+                zipcode:Zipcode,
+                state:state,
+                phone:phone,
+                address:address,
                 items: items,
                 email: usersData.email,
                 
@@ -55,12 +77,7 @@ const check_out = () => {
     //     const [error, setError] = useState(null);
     //     const [disabled, setDisabled] = useState(true);
     //     const [clientSecret, setClientSecret] = useState(true);
-    //     const [Name, setName] = useState("")
-    //     const [phone, setPhone] = useState("")
-    //     const [country, setCountry] = useState("")
-    //     const [Zipcode, setZipCode] = useState("")
-    //     const [state, setState] = useState("")
-    //     const [address, setAddress] = useState("")
+  
     //     const clientSecretS = (clientSecret).toString
     //     useEffect(() => {
     //         // generate the special stripe secret which allows us to charge a customer
@@ -164,6 +181,7 @@ const check_out = () => {
                                     price_total={item.price_total}
                                     remail={item.remail}
                                     resname={item.resname}
+                                    accid={item.accid}
                                 />
                             ))}
                         </div>
@@ -182,7 +200,7 @@ const check_out = () => {
                             <ul className="card-area">
                                 <li>
                                     <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="payments" id="flexRadioDefault1" />
+                                        <input className="form-check-input" type="radio" name="payments" id="flexRadioDefault1"   />
                                         <label className="form-check-label" >
                                         </label>
                                     </div>
@@ -212,43 +230,37 @@ const check_out = () => {
                             <div className="col-md-6">
                                 <label>Full Name</label>
                                 <div className="single-input-wrap">
-                                    <input type="text" className="form-control" placeholder="Full Name" />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <label>Email Address</label>
-                                <div className="single-input-wrap">
-                                    <input type="email" className="form-control" placeholder="Email Address" />
+                                    <input type="text" className="form-control" placeholder="Full Name"  onChange={(e) => setName(e.target.value)} />
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <label className="mt-3">Phone No</label>
                                 <div className="single-input-wrap">
-                                    <input type="text" className="form-control" placeholder="Phone No" />
+                                    <input type="text" className="form-control" placeholder="Phone No"  onChange={(e) => setPhone(e.target.value)}/>
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <label className="mt-3">Country</label>
                                 <div className="single-input-wrap">
-                                    <input type="text" className="form-control" placeholder="Type Your Country" />
+                                    <input type="text" className="form-control" placeholder="Type Your Country"  onChange={(e) => setCountry(e.target.value)} />
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <label className="mt-3">Zip Code</label>
                                 <div className="single-input-wrap">
-                                    <input type="text" className="form-control" placeholder="Zip Code" />
+                                    <input type="text" className="form-control" placeholder="Zip Code"  onChange={(e) => setZipCode(e.target.value)}/>
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <label className="mt-3">State</label>
                                 <div className="single-input-wrap">
-                                    <input type="text" className="form-control" placeholder="State" />
+                                    <input type="text" className="form-control" placeholder="State"  onChange={(e) => setState(e.target.value)}/>
                                 </div>
                             </div>
                             <div className="col-md-12">
-                                <label className="mt-3">Country</label>
+                                <label className="mt-3">Address</label>
                                 <div className="single-input-wrap">
-                                    <input type="text" className="form-control" placeholder="Type Your Country" />
+                                    <input type="text" className="form-control" placeholder="Type Your Address"  onChange={(e) => setAddress(e.target.value)} />
                                 </div>
                             </div>
                         </div>

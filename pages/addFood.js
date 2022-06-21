@@ -20,6 +20,7 @@ const addFood = () => {
     const [description, setDescription] = useState("");
     const [file, setFile] = useState("");
     const [remail, setRemail] = useState("");
+    const [accid, setAccid] = useState("");
     const [url, setURL] = useState("");
     let params = useParams()
     const router = useRouter()
@@ -30,6 +31,8 @@ const addFood = () => {
   
 
       const users = localStorage.getItem("email");
+      const accid = localStorage.getItem("accid");
+      setAccid(accid ? accid : "") 
       setRemail(users ? users : "");
   }, []);
     const addInagetoPost =(e)=>{
@@ -55,6 +58,7 @@ const addFood = () => {
           file:file,
           remail:remail,
           resname:resname,
+          accid:accid,
         time:serverTimestamp(),
           })
         

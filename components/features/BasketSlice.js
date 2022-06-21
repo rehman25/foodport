@@ -8,6 +8,7 @@ initialState,
 reducers:{
     addToBasket:(state,action)=>{
         state.items=[...state.items,action.payload]
+        
     },
     updateBasket:(state,action)=>{
         const index =state.items.findIndex(

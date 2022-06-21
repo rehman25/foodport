@@ -11,6 +11,8 @@ import { addDoc, collection, serverTimestamp, updateDoc, doc } from 'firebase/fi
 import { db, storage } from '../firebase';
 import { auth } from '../firebase';
 import Link from 'next/link';
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
 function register() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -18,50 +20,68 @@ function register() {
     const [phone, setPhone] = useState("");
     const [bname, setBName] = useState("");
     const [address, setAddress] = useState("")
+    const [btype, setBtype] = useState("")
+    const [bankac, setBankac] = useState("")
+    const [industry, setIndustry] = useState("")
+    const [bweb, setBweb] = useState("")
     const [uids, setUids] = useState("")
     const [hasError, Error] = useState("");
     const [select,setSelect]= React.useState();
     const dispatch = useDispatch();
+    const stripePromise = loadStripe(process.env.stripe_public_key)
     const router = useRouter()
     const handleCapacity=(e)=>{
         setSelect(e.target.value);
        
-      }
-      const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+    }
       const registers = async() => {
 
           createUserWithEmailAndPassword(auth,email,password).then((userAuth) => {
               setUids(userAuth.user.uid)
-            dispatch(login({
-                email: userAuth.user.email,
-                uid: userAuth.user.uid,
-                displayName: name,
-                usrtype:select
-            }))
+              localStorage.setItem('email', email);
+              localStorage.setItem('accid', accId);
+               localStorage.setItem('displayName', name);
           }).catch(function(error) {
             var errorMessage = error.message;
             console.log("errorMessage: "+ errorMessage)
           });
-          await stripe.accounts.create({
-            type: 'custom',
-            country: 'US',
-            email: email,
-            capabilities: {
-              card_payments: {requested: true},
-              transfers: {requested: true},
-            },
-          });
+        
+          const stripe = await stripePromise;
+          const RegisterSession =
+           await axios.post('/api/connectedaccount',
+              {
+                
+                  email: email,
+              
+              })
+              const accId= RegisterSession.data.id
+                console.log("accId: "+ accId)
+                const link=RegisterSession.data.link
+                console.log("link: "+ link)
+            
+    if(select==='user'|| accId!=null){
             const docRef = await addDoc(collection(db, 'userid'), {
                 email:email,
                 password:password,
                 name:name,
                 phone:phone,
                 select:select,
-                uid:uids
+                bname:bname,
+              accId:accId,
+              object: "bank_account",
+            country: "US",
+            currency: "usd",
+            routing_number: "110000000",
+            account_number: "000123456789",
+               
               })
-          
+            
+    
+              router.push(select==='user' ? '/' : link)
+            }
        
-        router.push(select==='user' ? '/' : '/ResturentOwner')
+        // router.push(select==='user' ? '/' : '/ResturentOwner')
+      
       }
   return(
       <>
@@ -111,13 +131,23 @@ function register() {
                         <option value="user"> User</option>
                         <option value="business"> Business</option>
                     </select>
-                    {select==="business"&& 
-                       
-                       <input type="text" value={bname} className="form-control" placeholder="BName" onChange={(e) => setBName(e.target.value)}/>
-                       }
+                    {
+                    (select==="business") && (
+
+                        <div>
+                        <input type="text" value={bname} className="form-control" placeholder="Buisness Name" onChange={(e) => setBName(e.target.value)}/>
+                        {/* <input type="text" value={btype} className="form-control" placeholder="Buisness Type" onChange={(e) => setBtype(e.target.value)}/>
+                        <input type="text" value={bankac} className="form-control" placeholder="Buisness Account" onChange={(e) => setBankac(e.target.value)}/>
+                        <input type="text" value={industry} className="form-control" placeholder="Buisness Address" onChange={(e) => setIndustry(e.target.value)}/>
+                        <input type="text" value={bweb} className="form-control" placeholder="Buisness Address" onChange={(e) => setBweb(e.target.value)}/> */}
+                        </div>
+                        )
+                    
+                      }
                         {select==="user"&& 
                        <input type="text" value={address} className="form-control" placeholder="Address" onChange={(e) => setAddress(e.target.value)}/>}
                     <br />
+                   <input type="radio" name="radio" value="user" onChange={handleCapacity}/>I accept Terms of condition
                     <br />
                     
                     <button className={regis_style.form_btns} onClick={registers}>REGISTER</button> 

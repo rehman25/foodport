@@ -26,7 +26,11 @@ const fullfillOrder = async (session) => {
             order: JSON.parse(session.metadata.order),
             timestamp: admin.firestore.FieldValue.serverTimestamp(),
             email: session.metadata.email,
-            // title : session.metadata.name,
+            name : session.metadata.name,
+            phone : session.metadata.phone,
+            address : session.metadata.address,
+            country : session.metadata.country,
+            state : session.metadata.state,
             remail : session.metadata.remail, 
             resname: session.metadata.resname,    
         })
