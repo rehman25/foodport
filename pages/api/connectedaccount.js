@@ -34,7 +34,7 @@ export default async(req, res)=> {
       );
       const accountLink = await stripe.accountLinks.create({
         account: account.id,
-        success_url:`${process.env.HOST}/ResturentOwner`,
+        success_url:`${process.env.HOST}/success`,
         failure_url:`${process.env.HOST}/Main_login`,
         type: 'account_onboarding',
       });
