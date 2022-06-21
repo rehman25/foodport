@@ -12,34 +12,12 @@ function ResFood({obj}) {
   const addItemsToBasket = async () => {
 
     const product = obj.data()   
-   
-    const remail=  await items.map(item=>item.remail)
-     console.log("Items",remail[0]);
+    dispatch(addToBasket(product));
+    console.log("Items",remail[0]);
+  
 
 
-  if(remail[0] && (localStorage.getItem('remail',undefined)) ) {
-      console.log("first remail",remail[0]);
-      
-      localStorage.setItem("remail",remail[0])
-      //add item to basket
-      dispatch(addToBasket(product));
-    }
-    else if(remail[0] && (localStorage.getItem('remail',remail[0]))) {
-      console.log("already remail",remail[0]);
-      //add items to basket
-      dispatch(addToBasket(product));
-    }
-  //  else if((localStorage.getItem('remail',remail[0])) && !(localStorage.getItem('remail',undefined))) {
-    //     console.log("invalid remail",remail[0]);
-    //     confirm("This item is from another restaurant if you agree your cart will be cleared")
-    //     // localStorage.clear("remail")
-    
-    //   }
-    else {
-      console.log("No items" ,remail[0]);
-    await localStorage.setItem("remail",remail[0]) &&
-      dispatch(addToBasket(product));
-    }
+ 
   }
     
 
