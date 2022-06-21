@@ -13,7 +13,7 @@ function ResFood({obj}) {
 
     const product = obj.data()   
     dispatch(addToBasket(product));
-    console.log("Items",remail[0]);
+    // console.log("Items",remail[0]);
   
 
 
