@@ -65,6 +65,7 @@ export default async (req, res) => {
         }
         if(event.type === "account.external_account.created"){
             const externalAccount = event.data.object;
+            console.log(externalAccount,"webhook")
 
             // Fullfill the order
             return  res.status(200).catch(e => res.status(400).send({message: "WEBHOOK_ERROR: " + e.message}))
