@@ -2,7 +2,7 @@
 import Head from 'next/head'
 import Footer from './Footer';
 import Header from './Header';
-import resstyle from '../styles/resbox.module.css';
+import  style from '../styles/Advertise.module.css';
 function advertize() {
     return (
         <>
@@ -20,30 +20,84 @@ function advertize() {
                     <div className='banner-text'>
                         <h3 className='banner-text'>Advertise | FOODPORT </h3>
                     </div>
-                    
-
-
                 </div>
+  
+ {/*Advertising  packages*/} 
+
                 <div className='container'>
-                    <br />
-                    <br />
+                   
                     <h4><b>Get To Know foodport</b></h4>
                     <h6>Order food and grocery online with the foodport app</h6>
-                    <p>Even when on the move, the free foodport mobile application for iOS, Android and Windows Phone, allows you to order food and groceries online anytime from anywhere. Whichever food you currently desire, we have the largest selection of restaurants for you to choose from, right here on foodport!	 <br />
-                    <br /> In three words, the process of ordering food & grocery online is simple, fast, and convenient. </p>
-                    <br />
-                    <h4> <b>How to Order</b></h4>
-                    <p>To order food delivery in Pakistan, follow these simple steps:</p>
-                    <ol>
-                        
-                        <li>Find a restaurant. Enter your delivery address in the location form to see all the places that deliver to your location. It can be your home, office, a hotel or even parks!</li> <br />
-                        <li>Choose your dishes. Browse the menu of the chosen restaurant, select your dishes and add them to your basket. When you are done, press the "Review Payment & Address" button.</li> <br />
-                        <li>Checkout & Payment. Check your order, payment method selection and exact delivery address. Simply follow the checkout instructions from there.</li> <br />
-                        <li>Delivery. We will send you an email and SMS confirming your order and delivery time. Sit back, relax and wait for piping hot food to be conveniently delivered to you!.</li> <br />
-                    </ol>
-                    <p>How to Contact foodport</p>
-                    <br />
-                    <p>If you wish to contact us regarding any questions or comments you may have, please send an email to support@foodport.pk or connect with us via our inbuilt help center.</p>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, dignissimos nulla suscipit optio veritatis dolorum quaerat praesentium. Sint minus doloribus beatae deserunt dignissimos, eligendi aut placeat dolorem incidunt recusandae assumenda.</p>
+                <div className="row">
+                    <div className="col-md-12">
+                    <div className="container mt-3"  id={style.main_packages}>
+	<div className={style.package}>
+		<div className={style.package__item}>
+			<div className={style.package__header}>
+				<div className={style.package__name}>Free User</div>
+			</div>
+			<div className={style.package__body}>
+				<div className={style.package__price_container}>
+					<div className={style.package__price}>$ 0.00</div>
+				</div>
+				<ul className={style.package_ul}>
+				<li>Lorem, ipsum.</li>
+					<li>Lorem, ipsum dolor.</li>
+					<li>Lorem, ipsum dolor.</li>
+				</ul>
+			</div>
+			<div className={style.package__footer}>
+				<button>AVAIL NOW</button>
+			</div>
+		</div>
+	
+	</div>
+	<div className={style.package}>
+		<div className={style.package__item}>
+			<div className={style.package__header}>
+				<div className={style.package__name}>Free User</div>
+			</div>
+			<div className={style.package__body}>
+				<div className={style.package__price_container}>
+					<div className={style.package__price}>    $ 0.00</div>
+				</div>
+				<ul className={style.package_ul}>
+					<li>Lorem, ipsum.</li>
+					<li>Lorem, ipsum dolor.</li>
+					<li>Lorem, ipsum dolor.</li>
+				</ul>
+			</div>
+			<div className={style.package__footer}>
+				<button>AVAIL NOW</button>
+			</div>
+		</div>
+	
+	</div>
+	<div className={style.package}>
+		<div className={style.package__item}>
+			<div className={style.package__header}>
+				<div className={style.package__name}>Free User</div>
+			</div>
+			<div className={style.package__body}>
+				<div className={style.package__price_container}>
+					<div className={style.package__price}>$ 0.00</div>
+				</div>
+				<ul className={style.package_ul}>
+				<li>Lorem, ipsum.</li>
+					<li>Lorem, ipsum dolor.</li>
+					<li>Lorem, ipsum dolor.</li>
+				</ul>
+			</div>
+			<div className={style.package__footer}>
+				<button>AVAIL NOW</button>
+			</div>
+		</div>
+	
+	</div>	
+</div>
+                    </div>
+                </div>
 
                     </div>
 
