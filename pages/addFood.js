@@ -22,6 +22,7 @@ const addFood = () => {
     const [remail, setRemail] = useState("");
     const [accid, setAccid] = useState("");
     const [url, setURL] = useState("");
+
     let params = useParams()
     const router = useRouter()
     const {id} = router.query
@@ -58,6 +59,7 @@ const addFood = () => {
           file:file,
           remail:remail,
           resname:resname,
+         
           accid:accid,
         time:serverTimestamp(),
           })
@@ -73,7 +75,8 @@ const addFood = () => {
             async(snapshot)=>{
                 const downloadUrl=await getDownloadURL(ImageRef);
               await updateDoc(doc(db,"food",docRef.id),{
-                  image:downloadUrl
+                  image:downloadUrl,
+                  itemid:docRef.id
               })   
             }
             

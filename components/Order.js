@@ -7,11 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function Order({obj}) {
 
+   
     const router = useRouter();
     const  dispatch = useDispatch();
-     
-
-
+    
+//    console.log("data", obj.data().order[0])
+ 
 
 return (
 <>
@@ -24,17 +25,26 @@ return (
             </div>&nbsp;&nbsp;
             <div className={styles.header_txt}>
                 <h6>Total ${obj?.data().amount}</h6>
-                <p> - Next Day delivery $0.00</p>
-            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <h6> - Date of Delivery {new Date(obj.data().timestamp.seconds*1000).toLocaleString()}</h6>
+            </div>
             <div className={styles.header_txt2}>
              
             </div>
 
         </div>
          <div className={styles.order_content}>
-        {obj.data().images?.map(image => (
-                <img  className={styles.order_img} src={image} loading="lazy" alt="" />
-                ))}
+         {obj.data().order.map((item,index) => (
+            <div className={styles.fromcontent}> 
+            <div >
+            <img className={styles.order_img} src={item.split(',')[0].substring(2)} loading="lazy" alt="" />
+            <p>{item.split(',')[1].split("\"")[1]}</p>
+            <p>{item.split(',')[2].substring(0,1)}</p>
+            </div>
+            </div>
+
+            
+            ))}
+      
         </div> 
         </div>
         </>

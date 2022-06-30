@@ -38,13 +38,13 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 export default async (req, res) => {
     const { items, email,name,phone,address,country,state } = req.body;
     const remail = items.map(item => item.remail)
-    const orderData = items.map(item => JSON.stringify([item.image, item.title]))
+    const orderData = items.map(item => JSON.stringify([item.image, item.title,item.quantity]))
     console.log(JSON.stringify(items,2,null), 'order')
 
     // console.log(items);
     const resname = items.map(item => item.resname)
     const transformedItems = items.map(item => ({
-        quantity: 1,
+        quantity: item.quantity,
         price_data: {
             currency: 'usd',
             unit_amount: item.price * 100,
@@ -80,6 +80,7 @@ export default async (req, res) => {
             state: state,
             // order:items.map(item=>item),
             order: JSON.stringify(orderData.map(item => item)),
+            
         },
 
 

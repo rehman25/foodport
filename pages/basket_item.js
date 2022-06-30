@@ -59,15 +59,19 @@ function basket_item() {
                         img={item?.image || ''}
                         title={item?.title||''} 
                         price={item?.price||''}
-                        _id={item?._id||''}
+                        itemid={item?.itemid||''}
                         remail={item?.remail||''}
+                        quantity={item?.quantity ? item?.quantity : 1}
+                        price_total={item.price_total||''}
                         description={item?.description}
                         useremail={item?.email}
                     />
                 }
                 ) : null}
-                {console.log(items)}
+                {console.log("CartItems",items)}
+           
          </div>
+       
       </div>
         
         <Footer />

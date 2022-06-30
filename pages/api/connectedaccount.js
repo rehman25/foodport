@@ -34,12 +34,18 @@ export default async(req, res)=> {
       );
       const accountLink = await stripe.accountLinks.create({
         account: account.id,
-        success_url:`${process.env.HOST}/success`,
+        success_url:`${process.env.HOST}/ResturentOwner`,
         failure_url:`${process.env.HOST}/Main_login`,
         type: 'account_onboarding',
       });
     //   console.log(JSON.stringify(account.id,null,2),'account')
       console.log(JSON.stringify(accountLink,null,2),'account', "link" ,accountLink.url)
-      res.status(200).json({id:account.id,link:accountLink.url});
       res.send({id:account.id,link:accountLink.url});
+      res.status(200).json({id:account.id,link:accountLink.url});
 }
+
+
+
+
+
+

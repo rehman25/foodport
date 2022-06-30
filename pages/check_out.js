@@ -25,7 +25,7 @@ const check_out = () => {
     const user = useSelector(selectUser)
     const items = useSelector(selectItems)
     const total = useSelector(selectTotal)
-    const [usersData, setUsersData] = useState();
+    const [usersData, setUsersData] = useState("");
     const stripePromise = loadStripe(process.env.stripe_public_key)
     const users = {
     };
@@ -35,17 +35,19 @@ const check_out = () => {
         users.name = localStorage.getItem("displayName");
 
         users.email = localStorage.getItem("email");
-        setUsersData(users ? users : "logged Out");
+
+        setUsersData(users.email ? users.email : "logged Out");
     }, []);
     const createCheckoutSession = async () => {
         const docRef = await addDoc(collection(db, 'userorder'), {
             name:Name,
-            email:usersData.email,
+            email:usersData,
             country:country,
             zipcode:Zipcode,
             state:state,
             phone:phone,
             address:address,
+           
         })
         const stripe = await stripePromise;
         const checkoutSession =
@@ -58,7 +60,8 @@ const check_out = () => {
                 phone:phone,
                 address:address,
                 items: items,
-                email: usersData.email,
+                email: usersData,
+                
                 
             })
         const result = await stripe.redirectToCheckout({
@@ -168,22 +171,21 @@ const check_out = () => {
                     <div className="items_container">
 
                         <div className="itemsss">
-                            {items.map(item => (
-                                <CheckoutProduct
-                                    id={item.id}
-                                    title={item.title}
-                                    description={item.description}
-                                    img={item.image}
-                                    price={item.price}
-                                    rating={item.rating}
-                                    _id={item._id}
-                                    quantity={item.quantity}
-                                    price_total={item.price_total}
-                                    remail={item.remail}
-                                    resname={item.resname}
+                        {items && items?.length ? items.map((item, i) => {
+                            return <CheckoutProduct
+                                key={i}
+                                img={item?.image || ''}
+                                title={item?.title||''} 
+                                price={item?.price||''}
+                                itemid={item?.itemid||''}
+                                remail={item?.remail||''}
+                                quantity={item?.quantity ? item?.quantity : 1}
+                                price_total={item.price_total||''}
+                                description={item?.description}
                                     accid={item.accid}
-                                />
-                            ))}
+                                /> 
+                            }
+                            ) : null}
                         </div>
 
                     </div>
@@ -196,7 +198,7 @@ const check_out = () => {
                         <span className="itemss_borderss"></span>
 
                         <div className="peyment-method">
-                            <h6>Payment Method</h6>
+                       
                             <ul className="card-area">
                                 <li>
                                     <div className="form-check">
@@ -205,18 +207,13 @@ const check_out = () => {
                                         </label>
                                     </div>
                                     <div className="details">
-                                        <h6>Credit Card <img src="./img/peyment-card.png" alt="img" /></h6>
+                                        <h6>Payment Method<img src="./img/peyment-card.png" alt="img" /></h6>
                                         <p>Pay with visa, Anex, MasterCard, Maestro,Discover and many other credit and debit credit vai paypal</p>
                                     </div>
                                 </li>
                             </ul>
 
-                            <div className="col-md-12">
-                                <label className="mt-3">Card Number</label>
-                                <div className="single-input-wrap">
-                                    <input type="text" className="form-control" placeholder="Card Number" />
-                                </div>
-                            </div>
+                         
                         </div>
                         <button className="orderBtn" onClick={createCheckoutSession}>Place Order</button>
                     </div>

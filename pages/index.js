@@ -45,6 +45,10 @@ export default function Home() {
   const godown = () => {
     window.scrollTo(0, 600);
   }
+  const onError = (status, clearSuggestions) => {
+    console.log('Google Maps API returned error with status: ', status)
+    clearSuggestions()
+  }
   const [locations, setLocations] = useState('')
   const [details, setDetails] = useState(null);
   const [address, setAddress] = useState("");
@@ -74,8 +78,9 @@ export default function Home() {
                   <div className={styles.search_input}>
                     <PlacesAutocomplete
                       value={address}
-                      onChange={setAddress}
+                      onChange={(value)=>setAddress(value)}
                       onSelect={handleSelect}
+                      onError={(status, clearSuggestions)=>onError}
                     >
                       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
                         return (

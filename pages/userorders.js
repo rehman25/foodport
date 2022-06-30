@@ -13,23 +13,26 @@ import { useSelector } from 'react-redux';
 import Head from 'next/head';
 export default function userorders({orders}) {
     const user =useSelector(selectUser);
+    const [usersName, setUsersName ] = useState("");
     const [userorder, setUserOrder] = useState([]);
  
    const getUserOrder = () => {
-   
+    const uemail = localStorage.getItem('email')
     onSnapshot(
-      query(collection(db,"users")),where("email","==" ,user?.email),(snapshot)=>{setUserOrder(snapshot.docs)
+      query(collection(db,"orderdetail"),where("email","==",uemail)),orderBy("timestamp", "desc"),(snapshot)=>{setUserOrder(snapshot.docs)
       console.log(snapshot.docs);
       })
   };
 
 
     useEffect(() => {
-      if(user){
+     
+      // Perform localStorage action
+      const uemail = localStorage.getItem('email')
+      console.log(uemail,"local storage")
+      setUsersName(((uemail!==null)&&(uemail!==undefined)) ? uemail : "")
           getUserOrder();
-      }else(
-      alert('login please')
-      )
+      
         
     
       }, [])

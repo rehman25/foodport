@@ -1,7 +1,9 @@
 
 module.exports = {
   reactStrictMode: true,
-  
+  images: {
+    domains: ['localhost','firebasestorage.googleapis.com'],
+  },
     "presets": ["next/babel"],
  
     env:{

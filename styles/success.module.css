@@ -57,11 +57,13 @@
     border: 1px solid lightgray;
     height: 300px;
 }
-.header_txt h6{
+.header_txt {
     font-size: 12px;
     font-weight:700;
+    display: flex;
+    flex-direction: row;
 }
-.header_txt p{
+.header_txt h6{
     font-size: 12px;
     font-weight: 500;
 }
@@ -95,9 +97,13 @@
 }
 
 .order_content{
+    display: flex;
     padding: 15px;
 }
-
+.fromcontent{
+    display: flex;
+    flex-direction: row;
+}
 @media screen and (max-width:992px) {
 
 

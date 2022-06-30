@@ -9,6 +9,7 @@ import Link from "next/link";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
+import SalesChart from "../components/SalesChart";
 import {
   collection,
   onSnapshot,
@@ -137,7 +138,7 @@ function ResturentOwner() {
                         data-to="85"
                         data-speed="1800"
                       >
-                        85
+                        850
                       </span>
                       <div className={`${DCss.overlay}`}></div>
                       <div className={`${DCss.left}`}></div>
@@ -169,11 +170,12 @@ function ResturentOwner() {
                 </div>
 
                 {/* <!-- CHART BAR SECTION --> */}
-                <div className={`${DCss.chart_wrapper}`}>
+                <div className={`${DCss.chart_wrapper} `} style={{backgroundColor : "Gray", height :"100%"}}>
                   <h3 className={`${DCss.left_reviews_head_fir}`}>
                     Total views
                   </h3>
                   {/* <canvas id={`${DCss.c}`}></canvas> */}
+                  <SalesChart />
                 </div>
               </div>
 

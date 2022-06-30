@@ -1,8 +1,62 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Head from 'next/head'
 import ResturentSidebar from './ResturentSidebar'
 import DCss from '../styles/dashboard.module.css'
+import { db, storage } from '../firebase';
+import { auth } from '../firebase'
+import { createUserWithEmailAndPassword, getAuth, deleteUser } from 'firebase/auth'
+import { updateDoc, collection, onSnapshot, orderBy, query, doc, getDocs, where, getDoc, addDoc,deleteDoc } from 'firebase/firestore'
+
 export default function ResOrdersDetails() {
+    const [userData, setUserData] = useState([])
+    const [select,setSelect]= useState();
+    const [addId,setAddId] =useState();
+      const [searchResult,setSearchResult] = useState()
+      const [flag,setFlag] = useState(false)
+    var data = [];
+    const handleCapacity=(e)=>{
+        setSelect(e.target.value);
+        setAddId(e.target.id);
+       console.log(select)
+    }
+    const getUser = async () => {
+      
+        const querySnapshot = await getDocs(collection(db, "orderdetail"),)
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            //   console.log(doc.id, " => ", doc.data());
+        data.push({ id: doc.id, ...doc.data() })
+      //   setUserData(userData=>[...userData,doc.data()])
+      })
+      
+      
+        setUserData(data);
+console.log(userData);        
+
+  }
+    
+  const firebaseUpdate = async () => {
+    const washingtonRef = doc(db, "orderdetail",addId);
+    // Set the "capital" field of the city 'DC'
+    await updateDoc(washingtonRef, {
+    status:select
+      // address: fdata.address,
+    });
+   
+    setFlag(!flag)
+  }
+ 
+ 
+  useEffect(() => {
+    try {
+      
+      getUser();
+     
+  
+    } catch (error) {
+      console.error(error)
+    }
+  }, [flag])  
   return (
     <>
         <Head>
@@ -25,84 +79,75 @@ export default function ResOrdersDetails() {
                                         <h4 className={`${DCss.panel_title}`}>Order Details</h4>
                                     </div>
                                 </div>
+                                
                             </div>
                             <div className={`${DCss.order_panel_body}`}>
                                 <table className={`${DCss.order_table}`}>
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Users</th>
+                                            <th>Resturants</th>
+                                            <th>User</th>
+                                            <th>OrderItems</th>
+                                            <th>Quantty</th>
                                             <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Payment Status</th>
+                                            <th>Amount</th>                                    
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
+                                    {(searchResult ? searchResult : userData.filter(item=>item.status!=="Completed"))?.map((item, index) => (
+                                        <tr key={index}>
+                                            <td>{item.resname}</td>
                                             <td>
                                                 {/* <!-- <div className="user_icon">
                                                     <img src="images/img1.jpg" alt="">
                                                 </div> --> */}
-                                                Michael Holz
+                                               {item.email}
                                             </td>
-                                            <td>Jun 15,2020</td>
-                                            <td>$555</td>
-                                            <td>Paid</td>
-                                            <td><span className={`${DCss.status}`}>Completed</span></td>
+                                            <td>      {item.order.map((item,index) => (
+           
+           <div >
+           <p>{item.split(',')[1].split("\"")[1]}</p>
+    
+           </div>
+         
+
+           
+           ))}</td>
+                <td>      {item.order.map((item,index) => (
+          
+          <div >
+         
+          <p>{item.split(',')[2].substring(0,1)}</p>
+          </div>
+        
+
+          
+          ))}</td>
+                                            <td>{new Date(item.timestamp.seconds*1000).toLocaleString()}</td>
+                                            <td>${item.amount}</td>
+                                            <td><span className={`${DCss.status}`}>{item.status}</span></td>
                                             <td>
                                                 <ul className={`${DCss.action_list}`}>
-                                                    <li><a href="#" className="btn"><em className="fa fa-trash"></em></a></li>
-                                                    <li><a href="#" className="btn"><em className="fa fa-edit"></em></a></li>
+                                                   <li></li>
+                                             <select className="" id={item.id} onChange={handleCapacity}>
+  <option value="pending">Pending</option>
+  <option value="inProcess">inProcess</option>
+  <option value="Completed">Completed</option>
+</select>
+                                                    <li><a href="#" onClick={firebaseUpdate} className="btn"><em className="fa fa-edit"></em></a></li>
                                                 </ul>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>
-                                                {/* <!-- <div className="user_icon">
-                                                    <img src="images/img1.jpg" alt="">
-                                                </div> --> */}
-                                                Michael Holz
-                                            </td>
-                                            <td>Jun 15,2020</td>
-                                            <td>$555</td>
-                                            <td>Paid</td>
-                                            <td><span className={`${DCss.status}`}>Completed</span></td>
-                                            <td>
-                                                <ul className={`${DCss.action_list}`}>
-                                                    <li><a href="#" className="btn"><em className="fa fa-trash"></em></a></li>
-                                                    <li><a href="#" className="btn"><em className="fa fa-edit"></em></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>
-                                                {/* <!-- <div className="user_icon">
-                                                    <img src="images/img1.jpg" alt="">
-                                                </div> --> */}
-                                                Michael Holz
-                                            </td>
-                                            <td>Jun 15,2020</td>
-                                            <td>$555</td>
-                                            <td>Paid</td>
-                                            <td><span className={`${DCss.status}`}>Completed</span></td>
-                                            <td>
-                                                <ul className={`${DCss.action_list}`}>
-                                                    <li><a href="#" className="btn"><em className="fa fa-trash"></em></a></li>
-                                                    <li><a href="#" className="btn"><em className="fa fa-edit"></em></a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
+                                                 ))}
                                     </tbody>
                                 </table>
                             </div>
+                          
                             <div className={`${DCss.panel_footer}`}>
                                 <div className="row">
-                                    <div className="col col-xs-6"> Showing <b>5</b> out of <b>25</b> entries</div>
+                                
                                     <div className="col-xs-6">
                                         <ul className={`${DCss.pagination}`}>
                                             <li><a href="#"><i className="fa fa-angle-double-left"></i></a></li>
@@ -114,6 +159,88 @@ export default function ResOrdersDetails() {
                                             <li><a href="#"><i className="fa fa-angle-double-right"></i></a></li>
                                         </ul>
                                     </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div className={`${DCss.Order_panel}`}>
+                            <div className={`${DCss.Order_panel_heading}`}>
+                                <div className="row">
+                                    <div className="col col-sm-5 col-xs-12">
+                                        <h4 className={`${DCss.panel_title}`}>Order History</h4>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div className={`${DCss.order_panel_body}`}>
+                                <table className={`${DCss.order_table}`}>
+                                    <thead>
+                                        <tr>
+                                            <th>Resturants</th>
+                                            <th>User</th>
+                                            <th>OrderItems</th>
+                                            <th>Quantty</th>
+                                            <th>Date</th>
+                                            <th>Amount</th>                                    
+                                            <th>Status</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {(searchResult ? searchResult : userData.filter(item=>item.status==="Completed"))?.map((item, index) => (
+                                        <tr key={index}>
+                                            <td>{item.resname}</td>
+                                            <td>
+                                                {/* <!-- <div className="user_icon">
+                                                    <img src="images/img1.jpg" alt="">
+                                                </div> --> */}
+                                               {item.email}
+                                            </td>
+                                            <td>      {item.order.map((item,index) => (
+           
+            <div >
+            <p>{item.split(',')[1].split("\"")[1]}</p>
+     
+            </div>
+          
+
+            
+            ))}</td>
+                 <td>      {item.order.map((item,index) => (
+           
+           <div >
+          
+           <p>{item.split(',')[2].substring(0,1)}</p>
+           </div>
+         
+
+           
+           ))}</td>
+                                            <td>{new Date(item.timestamp.seconds*1000).toLocaleString()}</td>
+                                            <td>${item.amount}</td>
+                                            <td><span className={`${DCss.status}`}>{item.status}</span></td>
+                                        
+                                        </tr>
+                                                 ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                          
+                            <div className={`${DCss.panel_footer}`}>
+                                <div className="row">
+                                
+                                    <div className="col-xs-6">
+                                        <ul className={`${DCss.pagination}`}>
+                                            <li><a href="#"><i className="fa fa-angle-double-left"></i></a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li className={`${DCss.active}`}><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#"><i className="fa fa-angle-double-right"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

@@ -18,7 +18,7 @@ const fullfillOrder = async (session) => {
     
     return app
         .firestore()
-        .collection('users')
+        .collection('orderdetail')
         .doc(session.id)
         .set({
             amount: session.amount_total / 100, 
@@ -32,7 +32,8 @@ const fullfillOrder = async (session) => {
             country : session.metadata.country,
             state : session.metadata.state,
             remail : session.metadata.remail, 
-            resname: session.metadata.resname,    
+            resname: session.metadata.resname,
+            status:"Pending"
         })
         .then(() => {
             console.log(`SUCCESS: Order ${session.id} has been added to DB!`)

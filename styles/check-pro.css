@@ -2,6 +2,7 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 5px 5px 19px #80808029;
+    
 }
 .foodport_items:hover {
     box-shadow: 5px 5px 19px grey;
@@ -12,8 +13,9 @@
         margin: auto !important;
     }
 }
+
 .foodport_items > img{
-    height: 80px;
+    height: 20px;
     width: 80px;
     border-radius: 9px;
     padding: 5px ;
@@ -50,7 +52,7 @@
 .pricetags{
     position: absolute;
     right: 33px;
-    top: 37px;
+    top: 10px;
 }
 @media screen and (max-width:450px) {
     .checkout_box_item {
