@@ -59,10 +59,17 @@ export default async (req, res) => {
             return res.status(400).send({message: "Webhook error: " + e.message })
         }
         if(event.type === "checkout.session.completed"){
-            const session = event.data.object
+            const session = event.data.object;
 
             // Fullfill the order
             return fullfillOrder(session).then(() => res.status(200)).catch(e => res.status(400).send({message: "WEBHOOK_ERROR: " + e.message}))
+        }
+        if(event.type === "account.external_account.created"){
+            const externalAccount = event.data.object;
+            console.log(externalAccount,"webhook")
+
+            // Fullfill the order
+            return  res.status(200).catch(e => res.status(400).send({message: "WEBHOOK_ERROR: " + e.message}))
         }
     }
 }
