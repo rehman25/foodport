@@ -1,9 +1,23 @@
-
+import React,{useState} from 'react';
 import Head from 'next/head'
 import Footer from './Footer';
 import Header from './Header';
 import  style from '../styles/Advertise.module.css';
+import { PhoneOutlined, MailOutlined ,CustomerServiceFilled, IdcardFilled } from '@ant-design/icons';
+
 function advertize() {
+  
+    const [showModal, setShowModal] = useState(false);
+    const [showModal1, setShowModal1] = useState(false);
+    const [showModal2, setShowModal2] = useState(false);
+  
+
+
+
+	
+	  
+
+
     return (
         <>
 
@@ -23,85 +37,163 @@ function advertize() {
                 </div>
   
  {/*Advertising  packages*/} 
-
-                <div className='container'>
-                   
-                    <h4><b>Get To Know foodport</b></h4>
-                    <h6>Order food and grocery online with the foodport app</h6>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, dignissimos nulla suscipit optio veritatis dolorum quaerat praesentium. Sint minus doloribus beatae deserunt dignissimos, eligendi aut placeat dolorem incidunt recusandae assumenda.</p>
-                <div className="row">
-                    <div className="col-md-12">
-                    <div className="container mt-3"  id={style.main_packages}>
-	<div className={style.package}>
-		<div className={style.package__item}>
-			<div className={style.package__header}>
-				<div className={style.package__name}>Free User</div>
-			</div>
-			<div className={style.package__body}>
-				<div className={style.package__price_container}>
-					<div className={style.package__price}>$ 0.00</div>
-				</div>
-				<ul className={style.package_ul}>
-				<li>Lorem, ipsum.</li>
-					<li>Lorem, ipsum dolor.</li>
-					<li>Lorem, ipsum dolor.</li>
-				</ul>
-			</div>
-			<div className={style.package__footer}>
-				<button>AVAIL NOW</button>
-			</div>
-		</div>
-	
-	</div>
-	<div className={style.package}>
-		<div className={style.package__item}>
-			<div className={style.package__header}>
-				<div className={style.package__name}>Free User</div>
-			</div>
-			<div className={style.package__body}>
-				<div className={style.package__price_container}>
-					<div className={style.package__price}>    $ 0.00</div>
-				</div>
-				<ul className={style.package_ul}>
-					<li>Lorem, ipsum.</li>
-					<li>Lorem, ipsum dolor.</li>
-					<li>Lorem, ipsum dolor.</li>
-				</ul>
-			</div>
-			<div className={style.package__footer}>
-				<button>AVAIL NOW</button>
-			</div>
-		</div>
-	
-	</div>
-	<div className={style.package}>
-		<div className={style.package__item}>
-			<div className={style.package__header}>
-				<div className={style.package__name}>Free User</div>
-			</div>
-			<div className={style.package__body}>
-				<div className={style.package__price_container}>
-					<div className={style.package__price}>$ 0.00</div>
-				</div>
-				<ul className={style.package_ul}>
-				<li>Lorem, ipsum.</li>
-					<li>Lorem, ipsum dolor.</li>
-					<li>Lorem, ipsum dolor.</li>
-				</ul>
-			</div>
-			<div className={style.package__footer}>
-				<button>AVAIL NOW</button>
-			</div>
-		</div>
-	
-	</div>	
-</div>
-                    </div>
-                </div>
-
+                    <div className="container">
+                          <div className="row" id={style.body}>
+                              <div className="col-lg-4 col-md-12 ">
+                                <div className={style.package1}>
+                                  <div className={style.headp}>
+                                    <span><img src="img/icon-07.png" alt="" height="60px" /></span> &nbsp;&nbsp;
+                                    &nbsp; &nbsp;    <span className={style.headcont}> <span className={style.H17}>$  <b>17</b> </span>  <br/>Basic<br />Package</span>
+                                  </div>
+                                  <button className={style.packbutton} onClick={() => setShowModal(true)} >Order Now!</button>
+                                  <ul className={style.packul}>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                  </ul>
+                                  <div className={style.packfooter}>
+                                        <span>
+                                        <CustomerServiceFilled style={{color:"red"}}/>   Speak With Us 
+                                        </span>
+                                        <span>
+                                        <PhoneOutlined style={{color:"red"}} />       +1 530 635 5554
+                                        </span>
+                                  </div>
+                                  { showModal && <div   onClose={()=>setShowModal(true)}   className={style.modal} >
+                    <div className={style.heading}>
                     </div>
 
+                      <div className={style.formpopup}>
+                        <div className="form-group" id={style.formgroup} >
+                        <label><IdcardFilled className={style.anticon} />  &nbsp;&nbsp; Name</label><br />
+                          <input  type="text" name='name'/><br />
+                          <label> <PhoneOutlined className={style.anticon}/> &nbsp;&nbsp; Phone</label> <br />
+                          <input type="text" name='number' /><br />
+                          <label >  < MailOutlined className={style.anticon}/> &nbsp;&nbsp; Email</label><br />
+                          <input type="text" placeholder="&nbsp; name@example.com" name='email' />
+                         
+                        </div>
+                      </div>
+                    <div className={style.buttondiv}>
+                      <button onClick={() => setShowModal(false)} className={style.buttonclose} >
+                        Close
+                      </button>
+                      <button onClick={() => setShowModal(false)}  className={style.buttonclose} >
+                        Submit
+                      </button>
+                    </div>
+                  </div> }
 
+                                </div>
+                               
+    
+                              </div>
+                              <div className="col-lg-4 col-md-12 ">
+                                <div className={style.package1}>
+                                  <div className={style.headp}>
+                                    <span><img src="img/icon-07.png" alt="" height="60px" /></span> &nbsp;&nbsp;
+                                    &nbsp; &nbsp;    <span className={style.headcont}> <span className={style.H17}>$  <b>30</b> </span>  <br/>Standard<br />Package</span>
+                                  </div>
+                                  <button className={style.packbutton} onClick={() => setShowModal1(true)} >Order Now!</button>
+                                  <ul className={style.packul}>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                  </ul>
+                                  <div className={style.packfooter}>
+                                        <span>
+                                        <CustomerServiceFilled style={{color:"red"}}/>   Speak With Us 
+                                        </span>
+                                        <span>
+                                        <PhoneOutlined style={{color:"red"}} />       +1 530 635 5554
+                                        </span>
+                                  </div>
+                                  { showModal1 && <div   onClose={()=>setShowModal1(true)}   className={style.modal} >
+                    <div className={style.heading}>
+                  
+                    </div>
+
+                      <div className={style.formpopup}>
+                        <div className="form-group" id={style.formgroup} >
+                        <label><IdcardFilled className={style.anticon} />  &nbsp;&nbsp; Name</label><br />
+                          <input  type="text" name='name'/><br />
+                    <label><PhoneOutlined className={style.anticon}/> &nbsp;&nbsp;   Phone</label> <br />
+                          <input type="text" name='number' /><br />
+                    <label>< MailOutlined className={style.anticon}/> &nbsp;&nbsp;  Email</label><br />
+                          <input type="text" placeholder="&nbsp; name@example.com" name='email' />
+                        </div>
+                      </div>
+                    <div className={style.buttondiv}>
+                      <button onClick={() => setShowModal1(false)} className={style.buttonclose} >
+                        Close
+                      </button>
+                      <button onClick={() => setShowModal1(false)}  className={style.buttonclose} >
+                        Submit
+                      </button>
+                    </div>
+                  </div> }
+
+                                </div>
+                               
+    
+                              </div><div className="col-lg-4 col-md-12 ">
+                                <div className={style.package1}>
+                                  <div className={style.headp}>
+                                    <span><img src="img/icon-07.png" alt="" height="60px" /></span> &nbsp;&nbsp;
+                                    &nbsp; &nbsp;    <span className={style.headcont}> <span className={style.H17}>$  <b>50</b> </span>  <br/>Premium<br />Package</span>
+                                  </div>
+                                  <button className={style.packbutton} onClick={() => setShowModal2(true)} >Order Now!</button>
+                                  <ul className={style.packul}>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                    <li>Lorem ipsum dolor sit.</li>
+                                  </ul>
+                                  <div className={style.packfooter}>
+                                        <span>
+                                        <CustomerServiceFilled style={{color:"red"}}/>   Speak With Us 
+                                        </span>
+                                        <span>
+                                        <PhoneOutlined style={{color:"red"}} />       +1 530 635 5554
+                                        </span>
+                                  </div>
+                                  { showModal2 && <div   onClose={()=>setShowModal2(true)}   className={style.modal} >
+                    <div className={style.heading}>
+                    </div>
+
+                      <div className={style.formpopup}>
+                        <div className="form-group" id={style.formgroup} >
+                          <label><IdcardFilled className={style.anticon} />  &nbsp;&nbsp; Name</label><br />
+                          <input  type="text" name='name'/><br />
+                    <label> <PhoneOutlined  rotate={90} className={style.anticon}/> &nbsp;&nbsp; Phone </label> <br />
+                          <input type="text" name='number' /><br />
+                    <label>< MailOutlined className={style.anticon}/> &nbsp;&nbsp;  Email </label><br />
+                          <input type="text" placeholder=" &nbsp; name@example.com" name='email' />
+                        </div>
+                      </div>
+                    <div className={style.buttondiv}>
+                      <button onClick={() => setShowModal2(false)} className={style.buttonclose} >
+                        Close
+                      </button>
+                      <button onClick={() => setShowModal2(false)}  className={style.buttonclose} >
+                        Submit
+                      </button>
+                    </div>
+                  </div> }
+
+                                </div>
+                               
+    
+                              </div>
+                          
+                          </div>
+                    </div>
+                        
             
 
             
