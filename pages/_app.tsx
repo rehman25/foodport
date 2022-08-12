@@ -9,7 +9,7 @@ import '../styles/about.css'
 import '../styles/faqs.css'
 import '../styles/user_dash.css'
 import '../styles/Add_Resturent.css'
-
+import '../styles/Form.css'
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import store from '../components/app/store';

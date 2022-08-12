@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from 'react';
-import form_style from '../styles/form.module.css'
 import Head from 'next/head'
+import { Layout } from 'antd';
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { Form, Input, Button, Row, Col, Typography, Spin } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { login, logout, } from '.././components/features/UserSlice';
@@ -12,7 +14,15 @@ import { onAuthStateChanged, signInWithEmailAndPassword, getAuth } from 'firebas
 import { route } from 'next/dist/server/router';
 import { app,db } from '../firebase';
 import { updateDoc, collection, onSnapshot, orderBy, query, doc, getDocs, where, getDoc, addDoc, deleteDoc } from 'firebase/firestore'
-function UserSignin() {
+
+
+
+const { Text } = Typography;
+const { Title } = Typography;
+const { Content } = Layout;
+
+function UserSignin({loading,layout,form,tailLayout})
+ {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -114,41 +124,109 @@ function UserSignin() {
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
       </Head>
 
-      <main>
+      <div className='user-account'>
+   
+         <div className="container h-100">
+         <Row className='h-100' align='middle'>
+         <Col xs={24} md={12} className='pr-md-5'>
+           <a href='#'>
+             <h2 className="mb-4"><strong>Food</strong>Port</h2>
+           </a>
 
-        <div className={form_style.form_img}>
-          <div className={form_style.main_from}>
-            <div className={form_style.upper_div}></div>
-          </div>
+           <Title className='text-center mb-md-4 pb-3' level={2}>
+             Login
+           </Title>
+             <Form
+               {...layout}
+               form={form}
+               initialValues={{ remember: true }}>
+               <Form.Item
+                 name='email'
+                 rules={[
+                   { required: true, message: 'Please enter Email!' },
+                 ]}>
+                 <Input placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+               </Form.Item>
 
-          <form >
-            <span className={form_style.center_logo}><Link href="/"><img src="/img/logologo.f87723ea.png" alt="" className={form_style.form_logo} /></Link></span>
-            <div className="row justify-content-center" id={form_style.form_row}>
-              <div className="col-lg-10">
-                <h4>{error}</h4>
-                <h3 className="text-center"> Sign In</h3>
-                <br />
-                <div className={form_style.icons_group}>
-                  <img src="/img/signin.png" alt="" />
-                  <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Your Email Address" />
-                </div>
-                <div className={`${form_style.icons_group}`}>
-                  <img src="/img/password.png" alt="" />
-                  <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Your Password" />
-                </div>
-                <br />
-                <br />
-                <button className={form_style.form_btns} onClick={logintoApp}>LOGIN</button>
-                <br />
-                <div className={form_style.btns_div}>Not a Member? <Link href="/register">Register</Link>
-                  {/* <button className={form_style.form_btns}>Register Now</button> */}
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
+               <Form.Item
+                 name='password'
+                 rules={[
+                   { required: true, message: 'Plese enter Password!' },
+                 ]}>
+                 <Input.Password placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+               </Form.Item>
+               <p>
+                 <a className='forgot-pass text-left' href='#/auth/forget-password'>
+                   Forgot Password
+                 </a>
+               </p>
 
-      </main>
+               <Form.Item {...tailLayout}>
+                 <Button
+                 onClick={logintoApp}
+                   type='primary'>
+                   Login
+               </Button>
+               </Form.Item>
+             </Form>
+           <p className='line'>
+             <span>Or login using</span>
+           </p>
+           <ul className='social-form-icon'>
+             <li>
+               <a href='#'>
+                 <i className='fa fa-facebook'></i>
+               </a>
+             </li>
+             <li>
+               <a href='#'>
+                 <i className='fa fa-twitter'></i>
+               </a>
+             </li>
+           </ul>
+
+           <p className='dont-account text-center'>
+             Don't have an account? <a href='/register'>Signup</a>
+           </p>
+         </Col>
+         <Col xs={24} md={12} className='text-center text-md-right'>
+           <img
+             className='img-fluid'
+             src='https://i.ibb.co/WVwpP9R/login.png'
+             alt='logo'
+           />
+         </Col>
+       </Row>
+         </div>
+
+      </div>
+      <div className='container-fluid footer'>
+      <Row>
+      <Col xs={24} sm={16} md={12} className='text-center text-md-left'>
+              <Text>Copyright 2020.All rights reserved.</Text>
+            </Col>
+            <Col xs={24} sm={8} md={12}>
+              <ul className='social-icon'>
+                <li>
+                  <a href='#'>
+                    <i className='fa fa-facebook'></i>
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>
+                    <i className='fa fa-twitter'></i>
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>
+                    <i className='fa fa-youtube'></i>
+                  </a>
+                </li>
+              </ul>
+            </Col>
+
+      </Row>
+      </div>
     </>
   );
 }

@@ -2,6 +2,9 @@
 import React,{useState} from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
+import { Row, Col, Typography, Tabs, Spin } from 'antd';
+import { connect } from 'react-redux';
+import Signup_Form from '../components/Signup_Form';
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux';
 import { login } from '.././components/features/UserSlice'
@@ -10,10 +13,21 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { addDoc, collection, serverTimestamp, updateDoc, doc } from 'firebase/firestore'; 
 import { db, storage } from '../firebase';
 import { auth } from '../firebase';
+import { Layout } from 'antd';
+
 import Link from 'next/link';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
-function register() {
+
+const { Text } = Typography;
+const { Title } = Typography;
+const { Content } = Layout;
+
+
+
+
+function register({ loading, user,loadingModal }) {
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [name, setName] = useState("");
@@ -83,6 +97,7 @@ function register() {
         // router.push(select==='user' ? '/' : '/ResturentOwner')
       
       }
+
   return(
       <>
         <Head>
@@ -93,71 +108,55 @@ function register() {
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
         </Head>
 
+        <div className='user-account signup'>
+      <div className="container h-100">
+        <Row className="h-100" align="middle">
+          <Col xs={24} md={12} className="pr-md-5">
+            <a href='#'>
+              <h2 className="mb-4"><strong>Food</strong>Port</h2>
+            </a>
 
-        <main>
-        {/* style="background-image: url(./img/Banner-7.jpg);" */}
-        <div className={regis_style.form_img}>
-
-            <div className={`${regis_style.main_from} ${regis_style.form}`}>
-            <div className={regis_style.upper_div}></div>    
-            </div>
-
+            <Title className='text-center mb-4' level={2}>Signup</Title>
+            <Signup_Form  />
             
-            <section>
-                <span className={regis_style.center_img}><Link href="/"><img src="/img/logologo.f87723ea.png" alt="" className='logo'/></Link></span>
-                {/* className="row justify-content-center" */}
-                <div  className={`${regis_style.form_row} ${regis_style.form_secd}`}>
-    
-                <div className="col-lg-10">
-                    <h3 className="text-center">Registration</h3>
-                    <div className={`${regis_style.icons_group} ${regis_style.icons_groups}`}>
-                        <img src="/img/signin.png" alt=""  className='logo'/>
-                        <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter Your Name" />
-                    </div>
-                    <div className={`${regis_style.icons_group} ${regis_style.icons_groups}`}>
-                        <img src="/img/phone.png" alt="" />
-                        <input type="text" className="form-control" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Enter Your Phone" />
-                    </div>
-                    <div className={`${regis_style.icons_group} ${regis_style.icons_groups}`}>
-                        <img src="/img/email.png" alt="" />
-                        <input type="text" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Your Email" />
-                    </div>
-                    <div className={`${regis_style.icons_group} ${regis_style.icons_groups}`}>
-                        <img src="/img/password.png" alt="" />
-                        <input type="text" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Your Password" />
-                    </div>
-                    <select name="UserType" id={regis_style.usertype} onChange={handleCapacity}>
-                        <option>User Type</option>
-                        <option value="user"> User</option>
-                        <option value="business"> Business</option>
-                    </select>
-                    {
-                    (select==="business") && (
+            <p className="dont-account text-center">By signing up you agree to the <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></p>
+            <p className="dont-account text-center pb-3">Alread have an account? <a href='#/auth/login'>Login</a></p>
+          </Col>
+          <Col xs={24} md={12} className="text-center text-md-right">
+            <img className="img-fluid" src="https://i.ibb.co/FKfy4Sh/signup.png" alt="logo" />
+          </Col>
+        </Row>
 
-                        <div>
-                        <input type="text" value={bname} className="form-control" placeholder="Buisness Name" onChange={(e) => setBName(e.target.value)}/>
-                        {/* <input type="text" value={btype} className="form-control" placeholder="Buisness Type" onChange={(e) => setBtype(e.target.value)}/>
-                        <input type="text" value={bankac} className="form-control" placeholder="Buisness Account" onChange={(e) => setBankac(e.target.value)}/>
-                        <input type="text" value={industry} className="form-control" placeholder="Buisness Address" onChange={(e) => setIndustry(e.target.value)}/>
-                        <input type="text" value={bweb} className="form-control" placeholder="Buisness Address" onChange={(e) => setBweb(e.target.value)}/> */}
-                        </div>
-                        )
-                    
-                      }
-                        {select==="user"&& 
-                       <input type="text" value={address} className="form-control" placeholder="Address" onChange={(e) => setAddress(e.target.value)}/>}
-                    <br />
-                   <input type="radio" name="radio" value="user" onChange={handleCapacity}/>I accept Terms of condition
-                    <br />
-                    
-                    <button className={regis_style.form_btns} onClick={registers}>REGISTER</button> 
-                </div>
+      
+      </div>
+    </div>
+    <div className='container-fluid footer'>
+        <Row>
+        <Col xs={24} sm={16} md={12} className='text-center text-md-left'>
+                <Text>Copyright 2020.All rights reserved.</Text>
+              </Col>
+              <Col xs={24} sm={8} md={12}>
+                <ul className='social-icon'>
+                  <li>
+                    <a href='#'>
+                      <i className='fa fa-facebook'></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#'>
+                      <i className='fa fa-twitter'></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#'>
+                      <i className='fa fa-youtube'></i>
+                    </a>
+                  </li>
+                </ul>
+              </Col>
 
-                </div>
-                </section>
+        </Row>
         </div>
-        </main>
-
       </>
   );
 }
